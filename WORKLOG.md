@@ -2,13 +2,14 @@
 
 ## Allison
 
+### 5/22 & 5/23
+resolved issues with git and branching
+
 ### 5/24
+set up the Score class
 
-resolved the issues with the branches
+### 5/25
 
-### date y
-
-info
 
 
 ## Bingde
