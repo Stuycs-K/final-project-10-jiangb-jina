@@ -19,5 +19,30 @@ void draw(){
       oRds -= 5;
     }
     */
+    /*
+    fill(154);
+    strokeWeight(16);
+    stroke(171);
+    circle(400,400,500);
+    delay(500);
+    stroke(255);
+    strokeWeight(20);
+    noFill();
+    circle(400,400,500);
+    */
+    
+    /*
     test1.display();
+    delay(500);
+    test1.cover();
+    */
+    
+    int count = 100;
+    print(count);
+    test1.update();
+    test1.display();
+    delay(1000);
+    //test1.cover();
+  
+  
 }

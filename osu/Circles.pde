@@ -12,7 +12,7 @@ public class Circles{
   AudioSample sample;
   float frequency;
   boolean hit;
-  float AR; //approach rate
+  int AR; //approach rate
  
   public Circles(int x, int y){
     xLoc = x;
@@ -27,13 +27,22 @@ public class Circles{
   }
   
   public void display(){
+    strokeWeight(1);
     noFill();
     if(!hit){
       stroke(0);
     }else{
       stroke(255);
     }
+    stroke(0);
     circle(xLoc,yLoc,innerRadius);
+    circle(xLoc,yLoc,outerRadius);
+  }
+  
+  public void cover(){
+    noFill();
+    stroke(130);
+    strokeWeight(3);
     circle(xLoc,yLoc,outerRadius);
   }
   
@@ -41,6 +50,8 @@ public class Circles{
     if(!hit && outerRadius > innerRadius){
       outerRadius -= AR;
     }
+    outerRadius = outerRadius - 5;
+    println(outerRadius);
   }
   
  
