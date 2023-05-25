@@ -1,17 +1,17 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Allison
 
-### date x
+### 5/24
 
-info
+resolved the issues with the branches
 
 ### date y
 
 info
 
 
-## GROUP MEMBER 2
+## Bingde
 
 ### date x
 
