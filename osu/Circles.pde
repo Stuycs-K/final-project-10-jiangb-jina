@@ -1,3 +1,5 @@
+import ddf.minim.*;
+
 public class Circles{
   int xLoc;
   int yLoc;
@@ -5,7 +7,10 @@ public class Circles{
   int outerRadius;
   int timeStart;
   int timeEnd;
- //SoundObject hitSound;
+  Minim minim;
+  AudioOutput out;
+  AudioSample sample;
+  float frequency;
  
   public Circles(int x, int y){
     xLoc = 400;
@@ -14,9 +19,10 @@ public class Circles{
     innerRadius = 150;
     timeStart = 0;
     timeEnd = 0;
+    frequency = 200;
   }
  
- 
+ //should be something added here: if(success) -> playNote(), break();, timeEnd = second();
   public void printOuter(){
     for(int i = 0; i < 20; i++){
       fill(145,30,30);
@@ -28,7 +34,8 @@ public class Circles{
     }
     timeEnd = second();
   }
- 
+  
+  
   public void printInner(){
   }
  
@@ -44,5 +51,8 @@ public class Circles{
   }
   */
  
- 
+  void playNote() {
+    out.playNote(frequency, 1.0);
+  }
+
 }
