@@ -3,8 +3,8 @@ public class Circles{
   int yLoc;
   int innerRadius;
   int outerRadius;
-  float timeStart;
-  float timeEnd;
+  int timeStart;
+  int timeEnd;
  //SoundObject hitSound;
  
   public Circles(int x, int y){
