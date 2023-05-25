@@ -24,14 +24,19 @@ public class Circles{
  
  //should be something added here: if(success) -> playNote(), break();, timeEnd = second();
   public void printOuter(){
+    /*
     for(int i = 0; i < 20; i++){
+      stroke(255);
       fill(145,30,30);
       circle(xLoc,yLoc,innerRadius);
       fill(255);
       circle(xLoc,yLoc,outerRadius);
       delay(100);
+      stroke(0);
+      circle(xLoc,yLoc,outerRadius);
       outerRadius -= 5;
     }
+    */
     timeEnd = second();
   }
   
