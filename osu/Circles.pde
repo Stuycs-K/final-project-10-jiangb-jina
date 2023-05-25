@@ -12,6 +12,8 @@ public class Circles{
     yLoc = 400;
     outerRadius = 250;
     innerRadius = 150;
+    timeStart = 0;
+    timeEnd = 0;
   }
  
  
@@ -24,6 +26,7 @@ public class Circles{
       delay(100);
       outerRadius -= 5;
     }
+    timeEnd = second();
   }
  
   public void printInner(){
