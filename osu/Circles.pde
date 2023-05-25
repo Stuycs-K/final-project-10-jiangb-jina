@@ -5,7 +5,7 @@ public class Circles extends Interactables{
   int outerRadius;
   float timeStart;
   float timeEnd;
-  SoundObject hitSound;
+ //SoundObject hitSound;
  
   public Circles(int x, int y){
     xLoc = x;
@@ -14,6 +14,9 @@ public class Circles extends Interactables{
  
  
   public void printOuter(){
+    for(int i = 0; i < 20; i++){
+      delay(50);
+    }
     circle(xLoc,yLoc,outerRadius);
   }
  
@@ -25,11 +28,13 @@ public class Circles extends Interactables{
     return timeEnd-timeStart;
   }
  
+ /*
   public void playSound(){
     sample = new AudioSample(this, 100000);
     sample.write(10, random(-100,100));
     sample.play();
   }
+  */
  
  
 }
