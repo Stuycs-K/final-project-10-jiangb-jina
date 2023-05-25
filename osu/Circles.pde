@@ -11,6 +11,8 @@ public class Circles{
   AudioOutput out;
   AudioSample sample;
   float frequency;
+  boolean hit;
+  float AR; //approach rate
  
   public Circles(int x, int y){
     xLoc = x;
@@ -20,7 +22,27 @@ public class Circles{
     timeStart = 0;
     timeEnd = 0;
     frequency = 200;
+    AR = 5;
+    hit = false;
   }
+  
+  public void display(){
+    noFill();
+    if(!hit){
+      stroke(0);
+    }else{
+      stroke(255);
+    }
+    circle(xLoc,yLoc,innerRadius);
+    circle(xLoc,yLoc,outerRadius);
+  }
+  
+  public void update(){
+    if(!hit && outerRadius > innerRadius){
+      outerRadius -= AR;
+    }
+  }
+  
  
  //should be something added here: if(success) -> playNote(), break();, timeEnd = second();
   public void printOuter(){

@@ -5,6 +5,7 @@ void setup(){
 void draw(){
   background(255);
   Circles test1 = new Circles(400,400);
+  /*
   int oRds = 250;
   for(int i = 0; i < 20; i++){
       stroke(255);
@@ -17,4 +18,6 @@ void draw(){
       circle(400,400,oRds);
       oRds -= 5;
     }
+    */
+    test1.display();
 }
