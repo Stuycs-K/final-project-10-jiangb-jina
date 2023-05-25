@@ -1,6 +1,10 @@
 void setup(){
   size(800,800);
-  circle(400,400,200);
-  fill(153,20,19);
-  circle(400,400,150);
+}
+
+void draw(){
+  background(255);
+  Circles test1 = new Circles(400,400);
+  test1.printInner();
+  test1.printOuter();
 }

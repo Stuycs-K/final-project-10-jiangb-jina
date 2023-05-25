@@ -1,6 +1,6 @@
-public class Circles extends Interactables{
-  float xLoc;
-  float yLoc;
+public class Circles{
+  int xLoc;
+  int yLoc;
   int innerRadius;
   int outerRadius;
   float timeStart;
@@ -8,20 +8,25 @@ public class Circles extends Interactables{
  //SoundObject hitSound;
  
   public Circles(int x, int y){
-    xLoc = x;
-    yLoc = y;
+    xLoc = 400;
+    yLoc = 400;
+    outerRadius = 250;
+    innerRadius = 150;
   }
  
  
   public void printOuter(){
     for(int i = 0; i < 20; i++){
-      delay(50);
+      fill(145,30,30);
+      circle(xLoc,yLoc,innerRadius);
+      fill(255);
+      circle(xLoc,yLoc,outerRadius);
+      delay(100);
+      outerRadius -= 5;
     }
-    circle(xLoc,yLoc,outerRadius);
   }
  
   public void printInner(){
-    circle(xLoc,yLoc,innerRadius);
   }
  
   public float getTime(){
