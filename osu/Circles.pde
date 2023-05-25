@@ -13,8 +13,8 @@ public class Circles{
   float frequency;
  
   public Circles(int x, int y){
-    xLoc = 400;
-    yLoc = 400;
+    xLoc = x;
+    yLoc = x;
     outerRadius = 250;
     innerRadius = 150;
     timeStart = 0;
