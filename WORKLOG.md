@@ -9,7 +9,7 @@ resolved issues with git and branching
 set up the Score class
 
 ### 5/25
-
+wrote calculatePoints and calculateCombo
 
 
 ## Bingde
