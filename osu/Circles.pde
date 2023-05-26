@@ -26,23 +26,22 @@ public class Circles{
     hit = false;
   }
   
-  public void display(){
+  public boolean display(){
     strokeWeight(1);
     noFill();
     if(!hit){
       stroke(0);
     }else{
       stroke(255);
+      return false;
     }
-    stroke(0);
     circle(xLoc,yLoc,innerRadius);
     circle(xLoc,yLoc,outerRadius);
+    return true;
   }
   
   public void cover(){
-    noFill();
-    stroke(130);
-    strokeWeight(3);
+    fill(255);
     circle(xLoc,yLoc,outerRadius);
   }
   
@@ -52,7 +51,20 @@ public class Circles{
     }
   }
   
- 
+  public boolean checkHit(float cx, float cy){
+    float d = dist(cx,cy,xLoc,yLoc);
+    if(d < outerRadius && !hit){
+      hit = true;
+      return true;
+    }
+    return false;
+  }
+  
+  public void mousePressed(){
+    checkHit((float)mouseX,(float)mouseY);
+  }
+  
+ //PRINTOUTER AND PRINTINNER SHOULD NOT BE USED
  //should be something added here: if(success) -> playNote(), break();, timeEnd = second();
   public void printOuter(){
     /*
@@ -70,7 +82,6 @@ public class Circles{
     */
     timeEnd = second();
   }
-  
   
   public void printInner(){
   }

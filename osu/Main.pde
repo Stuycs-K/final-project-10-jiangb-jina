@@ -8,7 +8,12 @@ void setup(){
 
 void draw(){
   background(255);
-  test1.update();
-  test1.display();
+  if(test1.display()){
+    test1.update();
+    test1.mousePressed();
+  }else{
+    test1.cover();
+  }
+  
   delay(50);
 }
