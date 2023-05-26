@@ -1,10 +1,13 @@
 void setup(){
   size(800,800);
+  test1 = new Circles(400,400);
 }
+
+
+Circles test1;
 
 void draw(){
   background(255);
-  Circles test1 = new Circles(400,400);
   /*
   int oRds = 250;
   for(int i = 0; i < 20; i++){

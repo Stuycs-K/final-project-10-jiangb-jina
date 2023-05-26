@@ -11,12 +11,16 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Bingde
 
-### date x
+### 5-22&&5-23
 
-info
+Fixed errors on branching and other git issues
 
-### date y
+### 5-24
 
-info
+Worked on the Circles class, have some issues with approaching circles but at least they are generated
+
+### 5-25
+
+Continued the work on the Circles class methods, had some new ideas to replace original methods

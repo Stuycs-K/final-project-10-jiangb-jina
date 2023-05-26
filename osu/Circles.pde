@@ -50,8 +50,6 @@ public class Circles{
     if(!hit && outerRadius > innerRadius){
       outerRadius -= AR;
     }
-    outerRadius = outerRadius - 5;
-    println(outerRadius);
   }
   
  
