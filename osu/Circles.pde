@@ -35,8 +35,9 @@ public class Circles{
       stroke(255);
       return false;
     }
-    circle(xLoc,yLoc,innerRadius);
     circle(xLoc,yLoc,outerRadius);
+    fill(163);
+    circle(xLoc,yLoc,innerRadius);
     return true;
   }
   
@@ -48,6 +49,9 @@ public class Circles{
   public void update(){
     if(!hit && outerRadius > innerRadius){
       outerRadius -= AR;
+    }
+    if(outerRadius == innerRadius){
+      hit = true;
     }
   }
   
