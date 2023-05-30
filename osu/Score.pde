@@ -14,26 +14,31 @@ public class Score{
     if (timeDiff<=23){
       add = 300;
     }
-    if else (timeDiff<=1000){
+    else if (timeDiff<=1000){
       add = 100;
     }
     else{
       add = 50;
     }
-    add = add(1+boost);
+    add = add*(1+boost);
     //implicitely, get 0 if missed = no time difference
     points += add;
     //update scoreboard
+    return points;
   }
   
-  public float calculateCombo(){
+  public int calculateCombo(){
     //add to combo when tapped
     if (combo>=10){
-      boost = 0.2 + 0.05*(combo-10);  
+      boost = int(0.2 + 0.05*(combo-10));  
     }
+    //do we want strings 
+    return boost;
   }
   
   public int countTaps(){
-    
+    taps++;
+    //update scoreboard
+    return taps;
   }
 }
