@@ -2,14 +2,14 @@ Circles test1;
 Circles test2;
 Circles test3;
 Circles test4;
-Circles[] map = new Circles[4];
+ArrayList<Circles> map = new ArrayList<Circles>();
 
 void setup(){
   size(800,800);
-  map[0] = new Circles(100,100);
-  map[1] = new Circles(300,300);
-  map[2] = new Circles(500,500);
-  map[3] = new Circles(700,700);
+  map.add(new Circles(100,100));
+  map.add(new Circles(300,300));
+  map.add(new Circles(500,500));
+  map.add(new Circles(700,700));
 }
 
 
@@ -20,6 +20,7 @@ void draw(){
       c.update();
     }else{
       c.cover();
+     // map.remove(map.indexOf(c));
     }
     delay(50);
   }
