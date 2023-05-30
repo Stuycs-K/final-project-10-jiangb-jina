@@ -36,9 +36,11 @@ void draw(){
 }
 
 void mouseClicked(){
-  if (!(test1.hit) && test1.checkHit(mouseX, mouseY)) {
-      test1.hit = true;
-      test1.playNote();
+  for(Circles c : map){
+    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
+      c.hit = true;
+      c.playNote();
     }
-    println("mouse is clicked");
+  }
+  println("mouse is clicked");
 }
