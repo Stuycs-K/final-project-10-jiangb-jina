@@ -19,7 +19,8 @@ public class Circles{
     yLoc = x;
     outerRadius = 250;
     innerRadius = 150;
-    timeStart = 0;
+    timeStart = millis();
+    println(timeStart);
     timeEnd = 0;
     frequency = 200;
     AR = 5;
@@ -94,6 +95,8 @@ public class Circles{
   }
  
   public float getTime(){
+    println(timeStart);
+    println(timeEnd);
     return timeEnd-timeStart;
   }
  

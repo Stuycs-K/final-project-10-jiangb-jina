@@ -22,5 +22,7 @@ void mouseClicked(){
       test1.hit = true;
       test1.playNote();
     }
+    test1.timeEnd = millis();
     println("mouse is clicked");
+    println(test1.getTime());
 }
