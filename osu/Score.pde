@@ -11,6 +11,7 @@ public class Score{
   }
   
   public int calculatePoints(float timeDiff){
+    //timediff based off of expected time hit vs actual time, which depends on the rate
     if (timeDiff<=23){
       add = 300;
     }

@@ -24,5 +24,6 @@ void mouseClicked(){
     }
     test1.timeEnd = millis();
     println("mouse is clicked");
+    //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
     println(test1.getTime());
 }
