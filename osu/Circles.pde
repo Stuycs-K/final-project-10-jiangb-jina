@@ -7,6 +7,10 @@ public class Circles{
   int outerRadius;
   int timeStart;
   int timeEnd;
+<<<<<<< HEAD
+=======
+  int expectedEnd;
+>>>>>>> allison
   Minim minim;
   AudioOutput out;
   AudioSample sample;
@@ -19,8 +23,15 @@ public class Circles{
     yLoc = x;
     outerRadius = 250;
     innerRadius = 150;
-    timeStart = 0;
+    timeStart = millis();
+    //println(timeStart);
+    //need to make sure that timeEnd and expectedEnd won't ever give a false positive result
     timeEnd = 0;
+    /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds 
+    each frame takes..
+    */
+    //for now i will just put a fake value
+    expectedEnd = timeStart + 1550;
     frequency = 200;
     AR = 5;
     hit = false;
@@ -49,7 +60,6 @@ public class Circles{
     if(!hit && outerRadius > innerRadius){
       outerRadius -= AR;
     }
-  }
   
   public boolean checkHit(float cx, float cy) {
     if (!hit && outerRadius > innerRadius) {
@@ -60,7 +70,10 @@ public class Circles{
     }
     return false;
   }
+<<<<<<< HEAD
   
+=======
+>>>>>>> 1cc1e1a2daf2c6cf103e358d9de8fba7665353c2
   /*
   public void mouseClicked() {
     if (!hit && checkHit(mouseX, mouseY)) {
@@ -94,7 +107,8 @@ public class Circles{
   }
  
   public float getTime(){
-    return timeEnd-timeStart;
+    //return timeEnd-timeStart; (used to write a fake value for expectedEnd)
+    return abs(expectedEnd-timeEnd);
   }
  
  /*
