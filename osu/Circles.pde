@@ -28,7 +28,7 @@ public class Circles{
     each frame takes..
     */
     //for now i will just put a fake value
-    expectedEnd = 1550;
+    expectedEnd = timeStart + 1550;
     frequency = 200;
     AR = 5;
     hit = false;
