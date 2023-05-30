@@ -61,12 +61,15 @@ public class Circles{
     return false;
   }
   
+  /*
   public void mouseClicked() {
     if (!hit && checkHit(mouseX, mouseY)) {
       hit = true;
       playNote();
     }
+    println("mouse is clicked");
   }
+  */
   
  //PRINTOUTER AND PRINTINNER SHOULD NOT BE USED
  //should be something added here: if(success) -> playNote(), break();, timeEnd = second();
