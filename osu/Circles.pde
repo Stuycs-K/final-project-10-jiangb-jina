@@ -51,17 +51,21 @@ public class Circles{
     }
   }
   
-  public boolean checkHit(float cx, float cy){
-    float d = dist(cx,cy,xLoc,yLoc);
-    if(d < outerRadius && !hit){
-      hit = true;
-      return true;
+  public boolean checkHit(float cx, float cy) {
+    if (!hit && outerRadius > innerRadius) {
+      float d = dist(cx, cy, xLoc, yLoc);
+      if (d < innerRadius) {
+        return true;
+      }
     }
     return false;
   }
   
-  public void keyPressed(){
-    checkHit((float)mouseX,(float)mouseY);
+  public void mouseClicked() {
+    if (!hit && checkHit(mouseX, mouseY)) {
+      hit = true;
+      playNote();
+    }
   }
   
  //PRINTOUTER AND PRINTINNER SHOULD NOT BE USED
