@@ -1,29 +1,49 @@
 Circles test1;
+Circles test2;
+Circles test3;
+Circles test4;
+ArrayList<Circles> map = new ArrayList<Circles>();
 
 void setup(){
   size(800,800);
-  test1 = new Circles(400,400);
+  map.add(new Circles(100,100));
+  map.add(new Circles(300,300));
+  map.add(new Circles(500,500));
+  map.add(new Circles(700,700));
 }
 
 
 void draw(){
   background(255);
-  if(test1.display()){
-    test1.update();
-  }else{
-    test1.cover();
+  for(Circles c : map){
+    if(c.display()){
+      c.update();
+    }else{
+      c.cover();
+     // map.remove(map.indexOf(c));
+    }
+    delay(50);
   }
-  
-  delay(50);
+  /*
+  for(int i = 0; i < map.length; i++){
+    if(map[i].display()){
+      test1.update();
+    }else{
+      test1.cover();
+    }
+    delay(50);
+  }
+  */
 }
 
 void mouseClicked(){
-  if (!(test1.hit) && test1.checkHit(mouseX, mouseY)) {
-      test1.hit = true;
-      test1.playNote();
+  for(Circles c : map){
+    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
+      c.hit = true;
+      c.playNote();
     }
-    test1.timeEnd = millis();
-    println("mouse is clicked");
+    c.timeEnd = millis();
     //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
-    println(test1.getTime());
+    println(c.getTime());
+  }
 }
