@@ -60,7 +60,7 @@ public class Circles{
     return false;
   }
   
-  public void mousePressed(){
+  public void keyPressed(){
     checkHit((float)mouseX,(float)mouseY);
   }
   
@@ -99,6 +99,8 @@ public class Circles{
   */
  
   void playNote() {
+    minim = new Minim(this);
+    out = minim.getLineOut();
     out.playNote(frequency, 1.0);
   }
 

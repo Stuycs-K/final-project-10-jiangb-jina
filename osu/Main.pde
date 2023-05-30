@@ -10,7 +10,7 @@ void draw(){
   background(255);
   if(test1.display()){
     test1.update();
-    test1.mousePressed();
+    test1.keyPressed();
   }else{
     test1.cover();
   }
