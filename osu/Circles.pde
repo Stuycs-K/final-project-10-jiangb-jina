@@ -27,8 +27,8 @@ public class Circles{
     /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds 
     each frame takes..
     */
-    //for now i will just put a fake value
-    expectedEnd = timeStart + 1550;
+    //for now i will just put a fake value, check later to see if accurate
+    expectedEnd = timeStart + 2720;
     frequency = 200;
     AR = 5;
     hit = false;

@@ -22,7 +22,7 @@ void draw(){
       c.cover();
      // map.remove(map.indexOf(c));
     }
-    delay(50);
+    delay(25);
   }
   /*
   for(int i = 0; i < map.length; i++){
@@ -44,6 +44,8 @@ void mouseClicked(){
     }
     c.timeEnd = millis();
     //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
+    println(c.timeStart+" "+c.timeEnd);
     println(c.getTime());
+    //Score.calculatePoints(c.getTime());
   }
 }
