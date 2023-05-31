@@ -68,10 +68,10 @@ void updateTemp() {
   }else if(map.size()==2){
     ts2[0] = map.get(0);
     ts2[1] = map.get(1);
-  }else{
+  }else if(map.size()==1){
     ts1[0] = map.get(0);
+  }else{
   }
-  
 }
 
 void mouseClicked(){
