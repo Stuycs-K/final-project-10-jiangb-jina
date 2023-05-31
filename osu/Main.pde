@@ -22,8 +22,8 @@ void setup(){
   map.add(new Circles(200,200));
   map.add(new Circles(700,700));
   updateTemp();
-  file = new SoundFile(this, "132.mp3");
-  file.play();
+  //file = new SoundFile(this, "132.mp3");
+  //file.play();
 }
 
 
