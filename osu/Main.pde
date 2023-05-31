@@ -3,6 +3,7 @@ Circles test2;
 Circles test3;
 Circles test4;
 ArrayList<Circles> map = new ArrayList<Circles>();
+Circles[] temp = new Circles[3];
 
 void setup(){
   size(800,800);
@@ -10,20 +11,20 @@ void setup(){
   map.add(new Circles(300,300));
   map.add(new Circles(500,500));
   map.add(new Circles(700,700));
+  updateTemp();
 }
 
 
 void draw(){
   background(255);
-  for(Circles c : map){
+  for(Circles c : temp){
     if(c.display()){
       c.update();
     }else{
       c.cover();
-     // map.remove(map.indexOf(c));
+      map.remove(map.indexOf(c));
     }
     delay(50);
-<<<<<<< HEAD
   }
   /*
   for(int i = 0; i < map.length; i++){
@@ -37,26 +38,14 @@ void draw(){
   */
 }
 
-void mouseClicked(){
-  for(Circles c : map){
-    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
-      c.hit = true;
-      c.playNote();
+void updateTemp() {
+  for (int i = 0; i < 3; i++) {
+    if (i < map.size()) {
+      temp[i] = map.get(i);
+    } else {
+      temp[i] = null;
     }
   }
-  println("mouse is clicked");
-=======
-  }
-  /*
-  for(int i = 0; i < map.length; i++){
-    if(map[i].display()){
-      test1.update();
-    }else{
-      test1.cover();
-    }
-    delay(50);
-  }
-  */
 }
 
 void mouseClicked(){
@@ -69,5 +58,4 @@ void mouseClicked(){
     //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
     println(c.getTime());
   }
->>>>>>> 1cc1e1a2daf2c6cf103e358d9de8fba7665353c2
 }

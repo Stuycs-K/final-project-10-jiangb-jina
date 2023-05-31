@@ -7,10 +7,7 @@ public class Circles{
   int outerRadius;
   int timeStart;
   int timeEnd;
-<<<<<<< HEAD
-=======
   int expectedEnd;
->>>>>>> allison
   Minim minim;
   AudioOutput out;
   AudioSample sample;
@@ -60,6 +57,7 @@ public class Circles{
     if(!hit && outerRadius > innerRadius){
       outerRadius -= AR;
     }
+  }
   
   public boolean checkHit(float cx, float cy) {
     if (!hit && outerRadius > innerRadius) {
@@ -70,10 +68,6 @@ public class Circles{
     }
     return false;
   }
-<<<<<<< HEAD
-  
-=======
->>>>>>> 1cc1e1a2daf2c6cf103e358d9de8fba7665353c2
   /*
   public void mouseClicked() {
     if (!hit && checkHit(mouseX, mouseY)) {
