@@ -1,4 +1,5 @@
 import ddf.minim.*;
+import processing.sound.*;
 
 public class Circles{
   int xLoc;
@@ -9,8 +10,7 @@ public class Circles{
   int timeEnd;
   int expectedEnd;
   Minim minim;
-  AudioOutput out;
-  AudioSample sample;
+  SoundFile file;
   float frequency;
   boolean hit;
   int AR; //approach rate
@@ -32,6 +32,7 @@ public class Circles{
     frequency = 200;
     AR = 5;
     hit = false;
+    file = new SoundFile(this, "do.wav");
   }
   
   public boolean display(){
@@ -117,9 +118,9 @@ public class Circles{
   */
  
   void playNote() {
+    float frequency = 261.63;
     minim = new Minim(this);
-    out = minim.getLineOut();
-    out.playNote(frequency, 1.0);
+    file.play();
   }
 
 }
