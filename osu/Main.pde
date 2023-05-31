@@ -4,6 +4,7 @@ Circles test3;
 Circles test4;
 ArrayList<Circles> map = new ArrayList<Circles>();
 //a temporary array to make sure only 3 objects show up on the screen at the right time
+//ts2 and ts1 is for when map has less than 3 objects left
 Circles[] temp = new Circles[3];
 Circles[] ts2 = new Circles[2];
 Circles[] ts1 = new Circles[1];
