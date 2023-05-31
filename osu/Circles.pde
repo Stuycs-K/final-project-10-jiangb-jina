@@ -1,4 +1,5 @@
 import ddf.minim.*;
+import processing.sound.*;
 
 public class Circles{
   int xLoc;
@@ -7,9 +8,9 @@ public class Circles{
   int outerRadius;
   int timeStart;
   int timeEnd;
+  int expectedEnd;
   Minim minim;
-  AudioOutput out;
-  AudioSample sample;
+  SoundFile file;
   float frequency;
   boolean hit;
   int AR; //approach rate
@@ -19,14 +20,24 @@ public class Circles{
     yLoc = x;
     outerRadius = 250;
     innerRadius = 150;
-    timeStart = 0;
+    timeStart = millis();
+    //println(timeStart);
+    //need to make sure that timeEnd and expectedEnd won't ever give a false positive result
     timeEnd = 0;
+    /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds 
+    each frame takes..
+    */
+    //for now i will just put a fake value
+    expectedEnd = timeStart + 2720;
     frequency = 200;
     AR = 5;
     hit = false;
   }
   
   public boolean display(){
+    if(innerRadius == outerRadius){
+      return false;
+    }
     strokeWeight(1);
     noFill();
     if(!hit){
@@ -35,9 +46,8 @@ public class Circles{
       stroke(255);
       return false;
     }
-    circle(xLoc,yLoc,outerRadius);
-    fill(163);
     circle(xLoc,yLoc,innerRadius);
+    circle(xLoc,yLoc,outerRadius);
     return true;
   }
   
@@ -50,23 +60,26 @@ public class Circles{
     if(!hit && outerRadius > innerRadius){
       outerRadius -= AR;
     }
-    if(outerRadius == innerRadius){
-      hit = true;
-    }
   }
   
-  public boolean checkHit(float cx, float cy){
-    float d = dist(cx,cy,xLoc,yLoc);
-    if(d < outerRadius && !hit){
-      hit = true;
-      return true;
+  public boolean checkHit(float cx, float cy) {
+    if (!hit && outerRadius > innerRadius) {
+      float d = dist(cx, cy, xLoc, yLoc);
+      if (d < innerRadius) {
+        return true;
+      }
     }
     return false;
   }
-  
-  public void mousePressed(){
-    checkHit((float)mouseX,(float)mouseY);
+  /*
+  public void mouseClicked() {
+    if (!hit && checkHit(mouseX, mouseY)) {
+      hit = true;
+      playNote();
+    }
+    println("mouse is clicked");
   }
+  */
   
  //PRINTOUTER AND PRINTINNER SHOULD NOT BE USED
  //should be something added here: if(success) -> playNote(), break();, timeEnd = second();
@@ -91,7 +104,8 @@ public class Circles{
   }
  
   public float getTime(){
-    return timeEnd-timeStart;
+    //return timeEnd-timeStart; (used to write a fake value for expectedEnd)
+    return abs(expectedEnd-timeEnd);
   }
  
  /*
@@ -103,7 +117,10 @@ public class Circles{
   */
  
   void playNote() {
-    out.playNote(frequency, 1.0);
+    float frequency = 261.63;
+    minim = new Minim(this);
+    //file = new SoundFile("do.wav");
+    //file.play();
   }
 
 }
