@@ -9,9 +9,10 @@ Circles[] temp = new Circles[3];
 Circles[] ts2 = new Circles[2];
 Circles[] ts1 = new Circles[1];
 SoundFile file;
+PImage bg;
 
 void setup(){
-  size(800,800);
+  size(1920,1080);
   map.add(new Circles(100,100));
   map.add(new Circles(300,300));
   map.add(new Circles(500,500));
@@ -24,11 +25,12 @@ void setup(){
   updateTemp();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
+  bg = loadImage("march into the sunset.jpg");
 }
 
 
 void draw(){
-  background(255);
+  background(bg);
   if(map.size()>=3){
     for(Circles c : temp){
       if(c.display()){
