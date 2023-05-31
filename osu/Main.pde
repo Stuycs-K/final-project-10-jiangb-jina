@@ -8,6 +8,7 @@ ArrayList<Circles> map = new ArrayList<Circles>();
 Circles[] temp = new Circles[3];
 Circles[] ts2 = new Circles[2];
 Circles[] ts1 = new Circles[1];
+SoundFile file;
 
 void setup(){
   size(800,800);
@@ -21,6 +22,8 @@ void setup(){
   map.add(new Circles(200,200));
   map.add(new Circles(700,700));
   updateTemp();
+  file = new SoundFile(this, "132.mp3");
+  file.play();
 }
 
 

@@ -32,7 +32,6 @@ public class Circles{
     frequency = 200;
     AR = 5;
     hit = false;
-    file = new SoundFile(this, "do.wav");
   }
   
   public boolean display(){
@@ -120,7 +119,8 @@ public class Circles{
   void playNote() {
     float frequency = 261.63;
     minim = new Minim(this);
-    file.play();
+    //file = new SoundFile("do.wav");
+    //file.play();
   }
 
 }
