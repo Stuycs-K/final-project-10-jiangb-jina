@@ -35,6 +35,9 @@ public class Circles{
   }
   
   public boolean display(){
+    if(innerRadius == outerRadius){
+      return false;
+    }
     strokeWeight(1);
     noFill();
     if(!hit){

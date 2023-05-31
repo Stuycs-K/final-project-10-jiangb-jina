@@ -3,7 +3,10 @@ Circles test2;
 Circles test3;
 Circles test4;
 ArrayList<Circles> map = new ArrayList<Circles>();
+//a temporary array to make sure only 3 objects show up on the screen at the right time
 Circles[] temp = new Circles[3];
+Circles[] ts2 = new Circles[2];
+Circles[] ts1 = new Circles[1];
 
 void setup(){
   size(800,800);
@@ -22,35 +25,53 @@ void setup(){
 
 void draw(){
   background(255);
-  for(Circles c : temp){
-    if(c.display()){
-      c.update();
-    }else{
-      map.remove(c);
-      updateTemp();
-    }
-    delay(50);
+  if(map.size()>=3){
+    for(Circles c : temp){
+      if(c.display()){
+        c.update();
+      }else{
+        map.remove(c);
+        updateTemp();
+      }
   }
-  /*
-  for(int i = 0; i < map.length; i++){
-    if(map[i].display()){
-      test1.update();
-    }else{
-      test1.cover();
+  }else if(map.size()==2){
+    for(Circles c : ts2){
+      if(c.display()){
+        c.update();
+      }else{
+        map.remove(c);
+        updateTemp();
+      }
     }
-    delay(50);
+  }else{
+    for(Circles c : ts1){
+      if(c.display()){
+        c.update();
+      }else{
+        map.remove(c);
+        updateTemp();
+      }
+    }
   }
-  */
+  delay(100);
 }
 
 void updateTemp() {
-  for (int i = 0; i < 3; i++) {
-    if (i < map.size()) {
-      temp[i] = map.get(i);
-    } else {
-      temp[i] = null;
+  if(map.size()>=3){
+    for (int i = 0; i < 3; i++) {
+      if (i < map.size()) {
+        temp[i] = map.get(i);
+      } else {
+        temp[i] = null;
+      }
     }
+  }else if(map.size()==2){
+    ts2[0] = map.get(0);
+    ts2[1] = map.get(1);
+  }else{
+    ts1[0] = map.get(0);
   }
+  
 }
 
 void mouseClicked(){
