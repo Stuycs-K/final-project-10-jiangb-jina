@@ -11,6 +11,11 @@ void setup(){
   map.add(new Circles(300,300));
   map.add(new Circles(500,500));
   map.add(new Circles(700,700));
+  map.add(new Circles(50,230));
+  map.add(new Circles(430,430));
+  map.add(new Circles(500,500));
+  map.add(new Circles(200,200));
+  map.add(new Circles(700,700));
   updateTemp();
 }
 
@@ -21,8 +26,8 @@ void draw(){
     if(c.display()){
       c.update();
     }else{
-      c.cover();
-      map.remove(map.indexOf(c));
+      map.remove(c);
+      updateTemp();
     }
     delay(50);
   }
