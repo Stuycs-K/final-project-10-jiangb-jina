@@ -1,16 +1,20 @@
 public class Score {
+  //unique to circle
+  float timeDiff;
+  int add;
+  //global
   int points;
-  int add ;
   int combo;
   int boost;
   int taps;
 
-  public Score(float timeDiff) {
-    //or do we want a single object, so the points add up?
-    points = calculatePoints(timeDiff);
+  public Score(float diff) {
+    //score here is single object, unique to each circle 
+    timeDiff = diff;
+    points += calculatePoints();
   }
 
-  public int calculatePoints(float timeDiff) {
+  public int calculatePoints() {
     //timediff based off of expected time hit vs actual time, which depends on the rate
     //depends on delay
     if (timeDiff<=120) {

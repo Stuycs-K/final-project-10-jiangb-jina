@@ -83,11 +83,15 @@ void mouseClicked() {
     if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
       c.hit = true;
       c.playNote();
+      Score s = new Score(c.getTime());
+      //s.countTaps();
+      println(s.countTaps());
+      println(s.calculatePoints());
     }
     c.timeEnd = millis();
     //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
-    println(c.timeStart+" "+c.timeEnd);
-    println(c.getTime());
+    //println(c.timeStart+" "+c.timeEnd);
+    //println(c.getTime());
     //Score.calculatePoints(c.getTime());
   }
 }
