@@ -4,40 +4,40 @@ Circles test3;
 Circles test4;
 ArrayList<Circles> map = new ArrayList<Circles>();
 
-void setup(){
-  size(800,800);
-  map.add(new Circles(100,100));
-  map.add(new Circles(300,300));
-  map.add(new Circles(500,500));
-  map.add(new Circles(700,700));
+void setup() {
+  size(800, 800);
+  map.add(new Circles(100, 100));
+  map.add(new Circles(300, 300));
+  map.add(new Circles(500, 500));
+  map.add(new Circles(700, 700));
 }
 
 
-void draw(){
+void draw() {
   background(255);
-  for(Circles c : map){
-    if(c.display()){
+  for (Circles c : map) {
+    if (c.display()) {
       c.update();
-    }else{
+    } else {
       c.cover();
-     // map.remove(map.indexOf(c));
+      // map.remove(map.indexOf(c));
     }
     delay(25);
   }
   /*
   for(int i = 0; i < map.length; i++){
-    if(map[i].display()){
-      test1.update();
-    }else{
-      test1.cover();
-    }
-    delay(50);
-  }
-  */
+   if(map[i].display()){
+   test1.update();
+   }else{
+   test1.cover();
+   }
+   delay(50);
+   }
+   */
 }
 
-void mouseClicked(){
-  for(Circles c : map){
+void mouseClicked() {
+  for (Circles c : map) {
     if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
       c.hit = true;
       c.playNote();
