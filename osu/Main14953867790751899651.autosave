@@ -99,6 +99,9 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
+    displayScore();
+
+    //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
   }
 }
 
@@ -109,7 +112,7 @@ void displayScore() {
   int length = textV.length();
   int addZero = 8-length;
   display = "";
-  for (int i = 0; i < addZero; i++) {
+  for (int i = 0; i < addZero; i++){
     display += "0";
   }
   display += points;
