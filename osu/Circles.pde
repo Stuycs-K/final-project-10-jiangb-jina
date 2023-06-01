@@ -1,4 +1,5 @@
 import ddf.minim.*;
+import processing.sound.*;
 
 public class Circles {
   int xLoc;
@@ -9,8 +10,7 @@ public class Circles {
   int timeEnd;
   int expectedEnd;
   Minim minim;
-  AudioOutput out;
-  AudioSample sample;
+  SoundFile file;
   float frequency;
   boolean hit;
   int AR; //approach rate
@@ -24,17 +24,20 @@ public class Circles {
     //println(timeStart);
     //need to make sure that timeEnd and expectedEnd won't ever give a false positive result
     timeEnd = 0;
-    /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds
-     each frame takes..
-     */
-    //for now i will just put a fake value, check later to see if accurate
+    /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds 
+    each frame takes..
+    */
+    //for now i will just put a fake value
     expectedEnd = timeStart + 2720;
     frequency = 200;
     AR = 5;
     hit = false;
   }
-
-  public boolean display() {
+  
+  public boolean display(){
+    if(innerRadius == outerRadius){
+      return false;
+    }
     strokeWeight(1);
     noFill();
     if (!hit) {
@@ -68,7 +71,6 @@ public class Circles {
     }
     return false;
   }
-
   /*
   public void mouseClicked() {
    if (!hit && checkHit(mouseX, mouseY)) {
@@ -115,8 +117,9 @@ public class Circles {
    */
 
   void playNote() {
+    float frequency = 261.63;
     minim = new Minim(this);
-    out = minim.getLineOut();
-    out.playNote(frequency, 1.0);
+    //file = new SoundFile("do.wav");
+    //file.play();
   }
 }

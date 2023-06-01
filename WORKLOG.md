@@ -15,15 +15,36 @@ wrote calculatePoints and calculateCombo
 fixed compile erorrs in Score
 
 ## 5/29
-reconciled differences between Circles and Score by updating the getTime method and reworking score calculations 
+reconciled differences between Circles and Score by updating the getTime method and reworking score calculations
 
 
 ## Bingde
 
-### date x
+### 5-22&&5-23
 
-info
+Fixed errors on branching and other git issues
 
-### date y
+### 5-24
 
-info
+Worked on the Circles class, have some issues with approaching circles but at least they are generated
+
+### 5-25
+
+Continued the work on the Circles class methods, had some new ideas to replace original methods
+
+
+### 5-28
+
+attempted at fixing the issue for clicking a single circle object
+
+
+### 5-29
+
+Fixed mouseClicked() so that circles will disappear after being hit
+
+### 5-30
+
+Included an arraylist for map, involving more circle objects to show up
+Attempted audio
+Solved the issue of cover() overlapping circles showing up later
+Restricted the amount of circles showing up to 3 at a time
