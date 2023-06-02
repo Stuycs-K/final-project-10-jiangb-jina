@@ -15,18 +15,18 @@ int points = 0;
 String display = "00000000";
 String dcombo = "0x";
 PImage bg;
-
+PFont font;
 void setup() {
   size(1000, 800);
-  map.add(new Circles(100, 100));
-  map.add(new Circles(300, 300));
-  map.add(new Circles(500, 500));
-  map.add(new Circles(700, 700));
-  map.add(new Circles(50, 230));
-  map.add(new Circles(430, 430));
-  map.add(new Circles(500, 500));
-  map.add(new Circles(200, 200));
-  map.add(new Circles(700, 700));
+  map.add(new Circles(100, 100, 1));
+  map.add(new Circles(300, 300, 2));
+  map.add(new Circles(500, 500, 3));
+  map.add(new Circles(700, 700, 4));
+  map.add(new Circles(400, 900, 1));
+  map.add(new Circles(900, 400, 2));
+  map.add(new Circles(100, 100, 3));
+  map.add(new Circles(900, 900, 4));
+  map.add(new Circles(450, 450, 5));
   updateTemp();
   bg = loadImage("newset.jpg");
   displayScore();
