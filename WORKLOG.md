@@ -18,7 +18,7 @@ fixed compile erorrs in Score
 reconciled differences between Circles and Score by updating the getTime method and reworking score calculations
 
 ##5/30 & 5/31
-Edited the score class so that it could be used and referenced in the Main class 
+Edited the score class so that it could be used and referenced in the Main class
 
 
 ## Bingde
@@ -51,3 +51,11 @@ Included an arraylist for map, involving more circle objects to show up
 Attempted audio
 Solved the issue of cover() overlapping circles showing up later
 Restricted the amount of circles showing up to 3 at a time
+
+### 5-31
+
+Updated background and made sure it run smoothly
+
+### 6-1
+
+Resized the background to fit smaller screens
