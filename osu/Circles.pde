@@ -47,7 +47,7 @@ public class Circles {
       return false;
     }
     circle(xLoc, yLoc, outerRadius);
-    fill(#4b0082);
+    fill(#4B0082);
     circle(xLoc, yLoc, innerRadius);
     return true;
   }
