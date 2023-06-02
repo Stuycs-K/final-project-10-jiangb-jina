@@ -19,7 +19,7 @@ public class Circles {
 
   public Circles(int x, int y, int CN) {
     xLoc = x;
-    yLoc = x;
+    yLoc = y;
     comboNumber = CN;
     outerRadius = 250;
     innerRadius = 150;
