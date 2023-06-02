@@ -89,7 +89,8 @@ void updateTemp() {
 }
 
 void mouseClicked() {
-  for (Circles c : map) {
+  if (map.size()>=3){
+    for (Circles c : temp) {
     if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
       c.hit = true;
       c.playNote();
@@ -103,6 +104,40 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
+  }
+  }else if(map.size()==2){
+    for (Circles c : ts2) {
+    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
+      c.hit = true;
+      c.playNote();
+      c.timeEnd = millis();
+      Score temp = new Score(c.getTime());
+      taps++;
+      combo = temp.combo;
+      points += temp.points;
+    } else {
+      //display score and taps, 0 added
+      //combo returns to 0
+      combo = 0;
+    }
+  }
+  }else if(map.size()==1){
+    for (Circles c : ts1) {
+    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
+      c.hit = true;
+      c.playNote();
+      c.timeEnd = millis();
+      Score temp = new Score(c.getTime());
+      taps++;
+      combo = temp.combo;
+      points += temp.points;
+    } else {
+      //display score and taps, 0 added
+      //combo returns to 0
+      combo = 0;
+    }
+  }
+  }else{
   }
 }
 
