@@ -16,11 +16,13 @@ public class Circles {
   int AR; //approach rate
   int comboNumber; 
   PFont mono;
+  int pitch;
 
-  public Circles(int x, int y, int CN) {
+  public Circles(int x, int y, int CN, int p) {
     xLoc = x;
     yLoc = y;
     comboNumber = CN;
+    pitch = p;
     outerRadius = 250;
     innerRadius = 150;
     timeStart = millis();

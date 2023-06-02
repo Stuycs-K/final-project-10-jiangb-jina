@@ -1,7 +1,11 @@
-Circles test1;
-Circles test2;
-Circles test3;
-Circles test4;
+SoundFile s1;
+SoundFile s2;
+SoundFile s3;
+SoundFile s4;
+SoundFile s5;
+SoundFile s6;
+SoundFile s7;
+ArrayList<SoundFile> keyboard = new ArrayList<SoundFile>();
 ArrayList<Circles> map = new ArrayList<Circles>();
 //a temporary array to make sure only 3 objects show up on the screen at the right time
 //ts2 and ts1 is for when map has less than 3 objects left
@@ -18,14 +22,28 @@ PImage bg;
 PFont font;
 void setup() {
   size(1000, 800);
-  map.add(new Circles(100, 100, 1));
-  map.add(new Circles(200, 100, 2));
-  map.add(new Circles(300, 100, 3));
-  map.add(new Circles(400, 100, 1));
-  map.add(new Circles(500, 100, 2));
-  map.add(new Circles(600, 100, 3));
-  map.add(new Circles(700, 100, 4));
-  map.add(new Circles(800, 100, 5));
+  s1 = new SoundFile(this, "do.wav");
+  s2 = new SoundFile(this, "re.wav");
+  s3 = new SoundFile(this, "mi.wav");
+  s4 = new SoundFile(this, "fa.wav");
+  s5 = new SoundFile(this, "sol.wav");
+  s6 = new SoundFile(this, "la.wav");
+  s7 = new SoundFile(this, "si.wav");
+  keyboard.add(s1);
+  keyboard.add(s2);
+  keyboard.add(s3);
+  keyboard.add(s4);
+  keyboard.add(s5);
+  keyboard.add(s6);
+  keyboard.add(s7);
+  map.add(new Circles(100, 100, 1, 3));
+  map.add(new Circles(200, 100, 2, 3));
+  map.add(new Circles(300, 100, 3, 4));
+  map.add(new Circles(400, 100, 1, 5));
+  map.add(new Circles(500, 200, 2, 5));
+  map.add(new Circles(600, 200, 3, 4));
+  map.add(new Circles(700, 200, 4, 3));
+  map.add(new Circles(800, 200, 5, 2));
   updateTemp();
   bg = loadImage("newset.jpg");
   displayScore();
@@ -42,6 +60,7 @@ void draw() {
       if (c.display()) {
         c.update();
       } else {
+        keyboard.get(c.pitch-1).play();
         map.remove(c);
         updateTemp();
       }
@@ -51,6 +70,7 @@ void draw() {
       if (c.display()) {
         c.update();
       } else {
+        keyboard.get(c.pitch-1).play();
         map.remove(c);
         updateTemp();
       }
@@ -60,6 +80,7 @@ void draw() {
       if (c.display()) {
         c.update();
       } else {
+        keyboard.get(c.pitch-1).play();
         map.remove(c);
         updateTemp();
       }
