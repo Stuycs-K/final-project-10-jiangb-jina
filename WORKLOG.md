@@ -17,6 +17,9 @@ fixed compile erorrs in Score
 ## 5/29
 reconciled differences between Circles and Score by updating the getTime method and reworking score calculations
 
+##5/30 & 5/31
+Edited the score class so that it could be used and referenced in the Main class 
+
 
 ## Bingde
 

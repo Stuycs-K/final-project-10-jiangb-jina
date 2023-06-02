@@ -1,46 +1,42 @@
-public class Score{
+public class Score {
+  //unique to circle
+  float timeDiff;
+  int add;
+  //global
   int points;
-  int add ;
   int combo;
-  int boost;
-  int taps;
-  
-  public Score(float timeDiff){
+
+  public Score(float timeDiff) {
     //or do we want a single object, so the points add up?
-    points = calculatePoints(timeDiff);
+    points = int(calculatePoints(timeDiff));
+    combo++;
+    calculateBoost();
   }
-  
-  public int calculatePoints(float timeDiff){
+
+  public float calculatePoints(float timeDiff) {
     //timediff based off of expected time hit vs actual time, which depends on the rate
     //depends on delay
-    if (timeDiff<=120){
+    float add = 0;
+    if (timeDiff<=120) {
       add = 300;
-    }
-    else if (timeDiff<=300){
+    } else if (timeDiff<=300) {
       add = 100;
-    }
-    else{
+    } else {
       add = 50;
     }
-    add = add*(1+boost);
+    add = add*(1+calculateBoost());
     //implicitely, get 0 if missed = no time difference
     points += add;
     //update scoreboard
     return points;
   }
-  
-  public int calculateCombo(){
-    //add to combo when tapped
-    if (combo>=10){
-      boost = int(0.2 + 0.05*(combo-10));  
+  public float calculateBoost() {
+    //consecutive taps, displayed in lower left
+    float boost = 0;
+    if (combo>=10) {
+      boost = 0.2 + 0.05*(combo-10);
     }
-    //do we want strings 
+    //do we want strings
     return boost;
-  }
-  
-  public int countTaps(){
-    taps++;
-    //update scoreboard
-    return taps;
   }
 }
