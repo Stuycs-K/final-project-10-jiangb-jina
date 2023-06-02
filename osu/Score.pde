@@ -4,7 +4,7 @@ public class Score {
   int add;
   //global
   int points;
-  int combo;
+  int combo = 0;
 
   public Score(float timeDiff) {
     //or do we want a single object, so the points add up?

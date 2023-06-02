@@ -97,7 +97,7 @@ void mouseClicked() {
       c.timeEnd = millis();
       Score temp = new Score(c.getTime());
       taps++;
-      combo = temp.combo;
+      combo++;
       points += temp.points;
     } else {
       //display score and taps, 0 added
@@ -125,7 +125,6 @@ void displayCombo() {
   fill(0);
   textSize(30);
   dcombo = "";
-  println(combo);
   dcombo = combo + "x";
   text(dcombo, 10, height-17);
 }
