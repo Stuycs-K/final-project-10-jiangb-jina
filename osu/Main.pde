@@ -83,6 +83,7 @@ void draw() {
         map.remove(c);
         keyboard.get(c.pitch-1).play();
         updateTemp();
+        noLoop();
       }
     }
   }
