@@ -13,11 +13,9 @@ int taps = 0;
 int combo = 0;
 int points = 0;
 String display = "00000000";
-String dcombo = "0x";
-PImage bg;
 
 void setup() {
-  size(1000, 800);
+  size(800, 800);
   map.add(new Circles(100, 100));
   map.add(new Circles(300, 300));
   map.add(new Circles(500, 500));
@@ -28,16 +26,14 @@ void setup() {
   map.add(new Circles(200, 200));
   map.add(new Circles(700, 700));
   updateTemp();
-  bg = loadImage("newset.jpg");
   displayScore();
-  displayCombo();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
 }
 
 
 void draw() {
-  background(bg);
+  background(255);
   if (map.size()>=3) {
     for (Circles c : temp) {
       if (c.display()) {
@@ -68,7 +64,6 @@ void draw() {
   }
   delay(100);
   displayScore();
-  displayCombo();
 }
 
 void updateTemp() {
@@ -104,6 +99,9 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
+    displayScore();
+
+    //make the circle disappear, seems to only work when the outer circle is actually bigger right now?
   }
 }
 
@@ -114,15 +112,9 @@ void displayScore() {
   int length = textV.length();
   int addZero = 8-length;
   display = "";
-  for (int i = 0; i < addZero; i++) {
+  for (int i = 0; i < addZero; i++){
     display += "0";
   }
   display += points;
   text(display, width-190, 50);
-}
-
-void displayCombo() {
-  fill(0);
-  textSize(20);
-  text(dcombo, 0, height-190);
 }
