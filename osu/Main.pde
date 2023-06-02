@@ -123,6 +123,9 @@ void displayScore() {
 
 void displayCombo() {
   fill(0);
-  textSize(20);
-  text(dcombo, 0, height-190);
+  textSize(30);
+  dcombo = "";
+  println(combo);
+  dcombo = combo + "x";
+  text(dcombo, 10, height-17);
 }
