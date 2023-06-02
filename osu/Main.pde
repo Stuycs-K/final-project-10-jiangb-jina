@@ -40,8 +40,8 @@ void setup() {
   keyboard.add(s6);
   keyboard.add(s7);
   map.add(new Circles(100, 100, 1, 3));
-  map.add(new Circles(200, 100, 2, 3));
-  map.add(new Circles(300, 100, 3, 4));
+  map.add(new Circles(200, 150, 2, 3));
+  map.add(new Circles(300, 80, 3, 4));
   map.add(new Circles(400, 100, 4, 5));
   map.add(new Circles(500, 200, 1, 5));
   map.add(new Circles(600, 200, 2, 4));
@@ -190,14 +190,13 @@ void displayScore() {
     display += "0";
   }
   display += points;
-  text(display, width-190, 50);
+  text(display, width-220, 50);
 }
 
 void displayCombo() {
   fill(0);
   textSize(30);
   dcombo = "";
-  println(combo);
   dcombo = combo + "x";
   text(dcombo, 10, height-17);
 }
@@ -205,6 +204,6 @@ void displayCombo() {
 void displayClicks(){
   fill(255);
   textSize(30);
-  text("" + leftClick, width-30, height-400);
-  text("" + rightClick, width-30, height-350);
+  text("" + leftClick, width-35, height-400);
+  text("" + rightClick, width-35, height-350);
 }
