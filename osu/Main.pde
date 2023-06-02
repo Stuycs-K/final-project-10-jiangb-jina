@@ -13,9 +13,11 @@ int taps = 0;
 int combo = 0;
 int points = 0;
 String display = "00000000";
+String dcombo = "0x";
+PImage bg;
 
 void setup() {
-  size(800, 800);
+  size(1838, 1122);
   map.add(new Circles(100, 100));
   map.add(new Circles(300, 300));
   map.add(new Circles(500, 500));
@@ -26,14 +28,16 @@ void setup() {
   map.add(new Circles(200, 200));
   map.add(new Circles(700, 700));
   updateTemp();
+  bg = loadImage("sunset.jpg");
   displayScore();
+  displayCombo();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
 }
 
 
 void draw() {
-  background(255);
+  background(bg);
   if (map.size()>=3) {
     for (Circles c : temp) {
       if (c.display()) {
@@ -64,6 +68,7 @@ void draw() {
   }
   delay(100);
   displayScore();
+  displayCombo();
 }
 
 void updateTemp() {
@@ -114,4 +119,10 @@ void displayScore() {
   }
   display += points;
   text(display, width-190, 50);
+}
+
+void displayCombo() {
+  fill(0);
+  textSize(20);
+  text(dcombo, 0, height-190);
 }
