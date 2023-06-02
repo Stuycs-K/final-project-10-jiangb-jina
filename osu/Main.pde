@@ -20,6 +20,9 @@ String display = "00000000";
 String dcombo = "0x";
 PImage bg;
 PFont font;
+int leftClick;
+int rightClick;
+
 void setup() {
   size(1000, 800);
   s1 = new SoundFile(this, "do.wav");
@@ -55,6 +58,7 @@ void setup() {
   bg = loadImage("newset.jpg");
   displayScore();
   displayCombo();
+  displayClicks();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
 }
@@ -97,6 +101,7 @@ void draw() {
   delay(100);
   displayScore();
   displayCombo();
+  displayClicks();
 }
 
 void updateTemp() {
@@ -119,6 +124,11 @@ void updateTemp() {
 
 
 void mouseClicked() {
+  if(mouseButton == LEFT){
+    leftClick++;
+  }else{
+    rightClick++;
+  }
   if (map.size()>=3){
     if (!(temp[0].hit) && temp[0].checkHit(mouseX, mouseY)) {
       temp[0].hit = true;
@@ -189,4 +199,11 @@ void displayCombo() {
   println(combo);
   dcombo = combo + "x";
   text(dcombo, 10, height-17);
+}
+
+void displayClicks(){
+  fill(255);
+  textSize(30);
+  text("" + leftClick, width-30, height-400);
+  text("" + rightClick, width-30, height-350);
 }
