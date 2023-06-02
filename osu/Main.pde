@@ -19,13 +19,13 @@ PFont font;
 void setup() {
   size(1000, 800);
   map.add(new Circles(100, 100, 1));
-  map.add(new Circles(250, 100, 2));
-  map.add(new Circles(400, 100, 3));
-  map.add(new Circles(100, 100, 1));
-  map.add(new Circles(400, 400, 2));
-  map.add(new Circles(700, 400, 3));
-  map.add(new Circles(300, 300, 4));
-  map.add(new Circles(450, 450, 5));
+  map.add(new Circles(200, 100, 2));
+  map.add(new Circles(300, 100, 3));
+  map.add(new Circles(400, 100, 1));
+  map.add(new Circles(500, 100, 2));
+  map.add(new Circles(600, 100, 3));
+  map.add(new Circles(700, 100, 4));
+  map.add(new Circles(800, 100, 5));
   updateTemp();
   bg = loadImage("newset.jpg");
   displayScore();
@@ -88,14 +88,15 @@ void updateTemp() {
   }
 }
 
+
 void mouseClicked() {
   if (map.size()>=3){
-    for (Circles c : temp) {
-    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
-      c.hit = true;
-      c.playNote();
-      c.timeEnd = millis();
-      Score temp = new Score(c.getTime());
+    if (!(temp[0].hit) && temp[0].checkHit(mouseX, mouseY)) {
+      temp[0].hit = true;
+      temp[0].playNote();
+      temp[0].timeEnd = millis();
+      float setUp = temp[0].getTime();
+      Score temp = new Score(setUp);
       taps++;
       combo = temp.combo;
       points += temp.points;
@@ -104,14 +105,13 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  }
   }else if(map.size()==2){
-    for (Circles c : ts2) {
-    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
-      c.hit = true;
-      c.playNote();
-      c.timeEnd = millis();
-      Score temp = new Score(c.getTime());
+    if (!(ts2[0].hit) && ts2[0].checkHit(mouseX, mouseY)) {
+      ts2[0].hit = true;
+      ts2[0].playNote();
+      ts2[0].timeEnd = millis();
+      float setUp = ts2[0].getTime();
+      Score temp = new Score(setUp);
       taps++;
       combo = temp.combo;
       points += temp.points;
@@ -120,14 +120,13 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  }
   }else if(map.size()==1){
-    for (Circles c : ts1) {
-    if (!(c.hit) && c.checkHit(mouseX, mouseY)) {
-      c.hit = true;
-      c.playNote();
-      c.timeEnd = millis();
-      Score temp = new Score(c.getTime());
+    if (!(ts1[0].hit) && ts1[0].checkHit(mouseX, mouseY)) {
+      ts1[0].hit = true;
+      ts1[0].playNote();
+      ts1[0].timeEnd = millis();
+      float setUp = ts1[0].getTime();
+      Score temp = new Score(setUp);
       taps++;
       combo = temp.combo;
       points += temp.points;
@@ -136,7 +135,6 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  }
   }else{
   }
 }
