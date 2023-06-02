@@ -24,18 +24,18 @@ public class Circles {
     //println(timeStart);
     //need to make sure that timeEnd and expectedEnd won't ever give a false positive result
     timeEnd = 0;
-    /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds 
-    each frame takes..
-    */
+    /*expectedEnd depends on the rate at which the approaching circle is closing in, which depends on how many milliseconds
+     each frame takes..
+     */
     //for now i will just put a fake value
     expectedEnd = timeStart + 2720;
     frequency = 200;
     AR = 5;
     hit = false;
   }
-  
-  public boolean display(){
-    if(innerRadius == outerRadius){
+
+  public boolean display() {
+    if (innerRadius == outerRadius) {
       return false;
     }
     strokeWeight(1);
