@@ -60,8 +60,8 @@ void draw() {
       if (c.display()) {
         c.update();
       } else {
-        keyboard.get(c.pitch-1).play();
         map.remove(c);
+        keyboard.get(c.pitch-1).play();
         updateTemp();
       }
     }
@@ -70,8 +70,8 @@ void draw() {
       if (c.display()) {
         c.update();
       } else {
-        keyboard.get(c.pitch-1).play();
         map.remove(c);
+        keyboard.get(c.pitch-1).play();
         updateTemp();
       }
     }
@@ -80,8 +80,8 @@ void draw() {
       if (c.display()) {
         c.update();
       } else {
-        keyboard.get(c.pitch-1).play();
         map.remove(c);
+        keyboard.get(c.pitch-1).play();
         updateTemp();
       }
     }
