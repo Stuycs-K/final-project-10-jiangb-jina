@@ -126,7 +126,8 @@ void updateTemp() {
 void mouseClicked() {
   if(mouseButton == LEFT){
     leftClick++;
-  }else{
+  }
+  if(mouseButton == RIGHT){
     rightClick++;
   }
   if (map.size()>=3){
