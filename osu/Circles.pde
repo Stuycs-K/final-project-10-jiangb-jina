@@ -14,10 +14,15 @@ public class Circles {
   float frequency;
   boolean hit;
   int AR; //approach rate
+  int comboNumber; 
+  PFont mono;
+  int pitch;
 
-  public Circles(int x, int y) {
+  public Circles(int x, int y, int CN, int p) {
     xLoc = x;
-    yLoc = x;
+    yLoc = y;
+    comboNumber = CN;
+    pitch = p;
     outerRadius = 250;
     innerRadius = 150;
     timeStart = millis();
@@ -32,6 +37,7 @@ public class Circles {
     frequency = 200;
     AR = 5;
     hit = false;
+    mono = createFont("andalemo.ttf", 72);
   }
 
   public boolean display() {
@@ -46,8 +52,12 @@ public class Circles {
       stroke(255);
       return false;
     }
-    circle(xLoc, yLoc, innerRadius);
     circle(xLoc, yLoc, outerRadius);
+    fill(#4B0082);
+    circle(xLoc, yLoc, innerRadius);
+    fill(#32CD32);
+    textFont(mono);
+    text("" + comboNumber, xLoc-25, yLoc+25);
     return true;
   }
 

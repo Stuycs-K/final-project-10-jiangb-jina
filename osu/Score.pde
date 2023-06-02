@@ -17,9 +17,9 @@ public class Score {
     //timediff based off of expected time hit vs actual time, which depends on the rate
     //depends on delay
     float add = 0;
-    if (timeDiff<=120) {
+    if (timeDiff<=300) {
       add = 300;
-    } else if (timeDiff<=300) {
+    } else if (timeDiff<=500) {
       add = 100;
     } else {
       add = 50;
