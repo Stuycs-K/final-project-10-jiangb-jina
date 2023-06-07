@@ -22,6 +22,7 @@ PImage bg;
 PFont font;
 int leftClick;
 int rightClick;
+boolean bomb = false;
 
 void setup() {
   size(1000, 800);
@@ -43,7 +44,7 @@ void setup() {
   map.add(new Circles(200, 150, 2, 3));
   map.add(new Circles(300, 80, 3, 4));
   map.add(new Circles(400, 100, 4, 5));
-  map.add(new Circles(500, 200, 1, 5));
+  map.add(new Bomb(500, 200, 1, 5));
   map.add(new Circles(600, 200, 2, 4));
   map.add(new Circles(700, 200, 3, 3));
   map.add(new Circles(800, 200, 4, 2));
@@ -136,10 +137,15 @@ void mouseClicked() {
       temp[0].playNote();
       temp[0].timeEnd = millis();
       float setUp = temp[0].getTime();
-      Score temp = new Score(setUp);
-      taps++;
-      combo = temp.combo;
-      points += temp.points;
+      if (temp[0].isBomb()==1){
+        Score temp = new Score(setUp, true);
+      }
+      else{
+        Score temp = new Score(setUp, false);
+        taps++;
+        combo = temp.combo;
+        points += temp.points;
+      }
     } else {
       //display score and taps, 0 added
       //combo returns to 0
@@ -151,10 +157,15 @@ void mouseClicked() {
       ts2[0].playNote();
       ts2[0].timeEnd = millis();
       float setUp = ts2[0].getTime();
-      Score temp = new Score(setUp);
-      taps++;
-      combo = temp.combo;
-      points += temp.points;
+      if (ts2[0].isBomb()==1){
+        Score temp = new Score(setUp, true);
+      }
+      else{
+        Score temp = new Score(setUp, false);
+        taps++;
+        combo = temp.combo;
+        points += temp.points;
+      }
     } else {
       //display score and taps, 0 added
       //combo returns to 0
@@ -166,10 +177,15 @@ void mouseClicked() {
       ts1[0].playNote();
       ts1[0].timeEnd = millis();
       float setUp = ts1[0].getTime();
-      Score temp = new Score(setUp);
-      taps++;
-      combo = temp.combo;
-      points += temp.points;
+      if (temp[0].isBomb()==1){
+        Score temp = new Score(setUp, true);
+      }
+      else{
+        Score temp = new Score(setUp, false);
+        taps++;
+        combo = temp.combo;
+        points += temp.points;
+      }
     } else {
       //display score and taps, 0 added
       //combo returns to 0

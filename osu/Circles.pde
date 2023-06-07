@@ -132,4 +132,8 @@ public class Circles {
     //file = new SoundFile("do.wav");
     //file.play();
   }
+  
+  public int isBomb(){
+    return 0;
+  }
 }

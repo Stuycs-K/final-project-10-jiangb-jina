@@ -21,7 +21,10 @@ reconciled differences between Circles and Score by updating the getTime method 
 Edited the score class so that it could be used and referenced in the Main class
 
 ## 6/1
-Edited the score methods, created displayScore and displayCombo, and worked on bomb objects. 
+Edited the score methods, created displayScore and displayCombo, and worked on bomb objects.
+
+## 6/5 & 6/6
+Made score more accurate to match frame rate & edited bomb objects
 
 ## Bingde
 
