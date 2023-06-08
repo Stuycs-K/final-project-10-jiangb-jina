@@ -124,7 +124,6 @@ public class Circles {
    sample.write(10, random(-100,100));
    sample.play();
    }
-   */
 
   void playNote() {
     float frequency = 261.63;
@@ -132,4 +131,5 @@ public class Circles {
     //file = new SoundFile("do.wav");
     //file.play();
   }
+   */
 }
