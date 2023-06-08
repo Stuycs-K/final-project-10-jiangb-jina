@@ -24,6 +24,7 @@ int leftClick;
 int rightClick;
 
 void setup() {
+  frameRate(120);
   size(1000, 800);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
@@ -138,7 +139,7 @@ void mouseClicked() {
       float setUp = temp[0].getTime();
       Score temp = new Score(setUp);
       taps++;
-      combo = temp.combo;
+      combo++;
       points += temp.points;
     } else {
       //display score and taps, 0 added
@@ -153,7 +154,7 @@ void mouseClicked() {
       float setUp = ts2[0].getTime();
       Score temp = new Score(setUp);
       taps++;
-      combo = temp.combo;
+      combo++;
       points += temp.points;
     } else {
       //display score and taps, 0 added
@@ -168,7 +169,7 @@ void mouseClicked() {
       float setUp = ts1[0].getTime();
       Score temp = new Score(setUp);
       taps++;
-      combo = temp.combo;
+      combo++;
       points += temp.points;
     } else {
       //display score and taps, 0 added
