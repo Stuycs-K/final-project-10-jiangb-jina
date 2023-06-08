@@ -21,7 +21,7 @@ reconciled differences between Circles and Score by updating the getTime method 
 Edited the score class so that it could be used and referenced in the Main class
 
 ## 6/1
-Edited the score methods, created displayScore and displayCombo, and worked on bomb objects. 
+Edited the score methods, created displayScore and displayCombo, and worked on bomb objects.
 
 ## Bingde
 
@@ -61,3 +61,12 @@ Updated background and made sure it run smoothly
 ### 6-1
 
 Resized the background to fit smaller screens
+
+### 6-6
+
+Revised the testing map
+
+### 6-7
+
+Updated the combo method in main.
+Created combo colors
