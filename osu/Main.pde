@@ -24,6 +24,17 @@ int leftClick;
 int rightClick;
 int RED = #cd3232;
 int BLUE = #0000FF;
+PVector[] path = {
+  new PVector(100, 100),
+  new PVector(200, 200),
+  new PVector(300, 100)
+};
+PVector[] expectedPath = {
+  new PVector(100, 100),
+  new PVector(200, 150),
+  new PVector(300, 100)
+};
+float completionThreshold = 10.0;
 
 void setup() {
   frameRate(80);
@@ -124,7 +135,6 @@ void updateTemp() {
   } else {
   }
 }
-
 
 void mouseClicked() {
   if(mouseButton == LEFT){
