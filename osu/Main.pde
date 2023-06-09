@@ -70,9 +70,11 @@ void setup() {
 
 
 void draw() {
-  t1.display();
-  /*
   background(bg);
+  if(!t1.done){
+    t1.display();
+  }
+  /*
   if (map.size()>=3) {
     for (Circles c : temp) {
       if (c.display()) {

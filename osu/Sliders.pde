@@ -12,6 +12,7 @@ public class Sliders{
   PFont mono;
   int comboColor;
   boolean hit;
+  boolean done;
   
   public Sliders(int x, int y, int eX, int eY, int comboNumber){
     startX = x;
@@ -23,6 +24,7 @@ public class Sliders{
     AR = 5;
     mono = createFont("andalemo.ttf", 72);
     this.comboNumber = comboNumber;
+    done = false;
   }
   
   public boolean display(){
@@ -46,14 +48,15 @@ public class Sliders{
         circle(tempX,tempY,innerRadius);
       }else{
         coverSlider();
+        done = true;
       }
     } else{
       updateShrink();
       coverCircle();
+      noFill();
       circle(startX, startY, outerRadius);
       fill(comboColor);
       circle(startX, startY, innerRadius);
-      fill(#32CD32);
     }
     return true;
   }
@@ -85,6 +88,6 @@ public class Sliders{
   
   public void coverSlider(){
     fill(255);
-    rect(startX-300,startY-300,endX-startX+2*innerRadius,2*innerRadius);
+    rect(startX-innerRadius,startY-innerRadius,endX-startX+2*innerRadius,2*innerRadius);
   }
 }
