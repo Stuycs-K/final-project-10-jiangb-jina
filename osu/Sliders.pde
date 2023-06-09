@@ -3,6 +3,8 @@ public class Sliders{
   int startY;
   int endX;
   int endY;
+  int tempX;
+  int tempY;
   int outerRadius = 250;
   int innerRadius = 150;
   int AR;
@@ -16,6 +18,8 @@ public class Sliders{
     startY = y;
     endX = eX;
     endY = eY;
+    tempX = x;
+    tempY = y;
     AR = 5;
     mono = createFont("andalemo.ttf", 72);
     this.comboNumber = comboNumber;
@@ -30,35 +34,28 @@ public class Sliders{
     curveVertex(endX,startY-0.5*innerRadius);
     curveVertex(endX+0.5*innerRadius,startY);
     curveVertex(endX,startY+0.5*innerRadius);
-    curveVertex(endX+innerRadius,startY);
+    curveVertex(endX+innerRadius,startY-0.5*innerRadius);
     vertex(endX,startY+0.5*innerRadius);
     vertex(startX,startY+0.5*innerRadius);
     endShape(CLOSE);
     
     circle(startX,startY,innerRadius);
-    return true;
-    /*
     if (innerRadius == outerRadius) {
-      
-    } else{
-      if(!hit){
-        
+      if(tempX!=endX){
+        updateMove();
+        circle(tempX,tempY,innerRadius);
       }else{
-      
+        coverSlider();
       }
+    } else{
+      updateShrink();
+      coverCircle();
+      circle(startX, startY, outerRadius);
+      fill(comboColor);
+      circle(startX, startY, innerRadius);
+      fill(#32CD32);
     }
-    strokeWeight(1);
-    noFill();
-    circle(startX, startY, outerRadius);
-    fill(comboColor);
-    circle(startX, startY, innerRadius);
-    fill(#32CD32);
-    textFont(mono);
-    text("" + comboNumber,startX-25, startY+25);
-    
-    
     return true;
-    */
   }
   
   public boolean checkHit(float cx, float cy) {
@@ -69,5 +66,25 @@ public class Sliders{
       }
     }
     return false;
+  }
+  
+  public void updateShrink() {
+    if (!hit && outerRadius > innerRadius) {
+      outerRadius -= AR;
+    }
+  }
+  
+  public void updateMove(){
+    tempX += AR;
+  }
+  
+  public void coverCircle() {
+    fill(255);
+    circle(startX, startY, outerRadius);
+  }
+  
+  public void coverSlider(){
+    fill(255);
+    rect(startX-300,startY-300,endX-startX+2*innerRadius,2*innerRadius);
   }
 }
