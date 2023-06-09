@@ -88,4 +88,22 @@ public class Circles {
     //return timeEnd-timeStart; (used to write a fake value for expectedEnd)
     return abs(expectedEnd-timeEnd);
   }
+  /*
+  public void playSound(){
+   sample = new AudioSample(this, 100000);
+   sample.write(10, random(-100,100));
+   sample.play();
+   }
+   */
+
+  void playNote() {
+    float frequency = 261.63;
+    minim = new Minim(this);
+    //file = new SoundFile("do.wav");
+    //file.play();
+  }
+  
+  public int isBomb(){
+    return 0;
+  }
 }
