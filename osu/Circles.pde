@@ -39,6 +39,7 @@ public class Circles {
     AR = 5;
     hit = false;
     mono = createFont("andalemo.ttf", 72);
+    comboColor = cColor;
   }
 
   public boolean display() {

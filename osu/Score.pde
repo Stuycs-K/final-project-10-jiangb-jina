@@ -6,11 +6,10 @@ public class Score {
   int points;
   int combo = 0;
 
-  public Score(float timeDiff, boolean bomb) {
+  public Score(float timeDiff, boolean bomb, int c) {
     //or do we want a single object, so the points add up?
     if (!bomb){
       points = int(calculatePoints(timeDiff));
-      combo++;
       calculateBoost();
     }
     else{

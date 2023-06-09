@@ -42,21 +42,21 @@ void setup() {
   keyboard.add(s5);
   keyboard.add(s6);
   keyboard.add(s7);
-  map.add(new Circles(100, 100, 1, 3));
-  map.add(new Circles(200, 150, 2, 3));
-  map.add(new Circles(300, 80, 3, 4));
-  map.add(new Circles(400, 100, 4, 5));
+  map.add(new Circles(100, 100, 1, 3, BLUE));
+  map.add(new Circles(200, 150, 2, 3, BLUE));
+  map.add(new Circles(300, 80, 3, 4, BLUE));
+  map.add(new Circles(400, 100, 4, 5, BLUE));
   map.add(new Bomb(500, 200, 1, 5));
-  map.add(new Circles(600, 200, 2, 4));
-  map.add(new Circles(700, 200, 3, 3));
-  map.add(new Circles(800, 200, 4, 2));
-  map.add(new Circles(400, 400, 1, 1));
-  map.add(new Circles(300, 400, 2, 1));
-  map.add(new Circles(200, 400, 3, 2));
-  map.add(new Circles(100, 400, 4, 3));
-  map.add(new Circles(500, 600, 1, 3));
-  map.add(new Circles(600, 600, 2, 2));
-  map.add(new Circles(700, 600, 3, 2));
+  map.add(new Circles(600, 200, 2, 4, #32a6cd));
+  map.add(new Circles(700, 200, 3, 3, #32a6cd));
+  map.add(new Circles(800, 200, 4, 2, #32a6cd));
+  map.add(new Circles(400, 400, 1, 1, #32a6cd));
+  map.add(new Circles(300, 400, 2, 1, RED));
+  map.add(new Circles(200, 400, 3, 2, RED));
+  map.add(new Circles(100, 400, 4, 3, RED));
+  map.add(new Circles(500, 600, 1, 3, RED));
+  map.add(new Circles(600, 600, 2, 2, RED));
+  map.add(new Circles(700, 600, 3, 2, RED));
   updateTemp();
   bg = loadImage("newset.jpg");
   displayScore();
@@ -140,14 +140,15 @@ void mouseClicked() {
       temp[0].timeEnd = millis();
       float setUp = temp[0].getTime();
       if (temp[0].isBomb()==1){
-        Score temp = new Score(setUp, true);
-        combo = temp.combo;
+        //should taps add if bomb
+        combo = 0;
+        Score temp = new Score(setUp, true, combo);
         points += temp.points;
       }
       else{
-        Score temp = new Score(setUp, false);
+        combo++;
+        Score temp = new Score(setUp, false, combo);
         taps++;
-        combo = temp.combo;
         points += temp.points;
       }
     } else {
@@ -162,14 +163,14 @@ void mouseClicked() {
       ts2[0].timeEnd = millis();
       float setUp = ts2[0].getTime();
       if (ts2[0].isBomb()==1){
-        Score temp = new Score(setUp, true);
-        combo = temp.combo;
+        combo = 0;
+        Score temp = new Score(setUp, true, combo);
         points += temp.points;
       }
       else{
-        Score temp = new Score(setUp, false);
+        combo++;
+        Score temp = new Score(setUp, false, combo);
         taps++;
-        combo = temp.combo;
         points += temp.points;
       }
     } else {
@@ -184,15 +185,14 @@ void mouseClicked() {
       ts1[0].timeEnd = millis();
       float setUp = ts1[0].getTime();
       if (temp[0].isBomb()==1){
-        Score temp = new Score(setUp, true);
-        //should taps be added to if bomb?
-        combo = temp.combo;
+        combo = 0;
+        Score temp = new Score(setUp, true, combo);
         points += temp.points;
       }
       else{
-        Score temp = new Score(setUp, false);
+        combo++;
+        Score temp = new Score(setUp, false, combo);
         taps++;
-        combo = temp.combo;
         points += temp.points;
       }
     } else {
