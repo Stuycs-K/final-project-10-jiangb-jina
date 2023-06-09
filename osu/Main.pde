@@ -124,13 +124,13 @@ void updateTemp() {
 
 
 void mouseClicked() {
-  if(mouseButton == LEFT){
+  if (mouseButton == LEFT) {
     leftClick++;
   }
-  if(mouseButton == RIGHT){
+  if (mouseButton == RIGHT) {
     rightClick++;
   }
-  if (map.size()>=3){
+  if (map.size()>=3) {
     if (!(temp[0].hit) && temp[0].checkHit(mouseX, mouseY)) {
       temp[0].hit = true;
       temp[0].playNote();
@@ -145,7 +145,7 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  }else if(map.size()==2){
+  } else if (map.size()==2) {
     if (!(ts2[0].hit) && ts2[0].checkHit(mouseX, mouseY)) {
       ts2[0].hit = true;
       ts2[0].playNote();
@@ -160,7 +160,7 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  }else if(map.size()==1){
+  } else if (map.size()==1) {
     if (!(ts1[0].hit) && ts1[0].checkHit(mouseX, mouseY)) {
       ts1[0].hit = true;
       ts1[0].playNote();
@@ -175,7 +175,7 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  }else{
+  } else {
   }
 }
 
@@ -201,7 +201,7 @@ void displayCombo() {
   text(dcombo, 10, height-17);
 }
 
-void displayClicks(){
+void displayClicks() {
   fill(255);
   textSize(30);
   text("" + leftClick, width-35, height-400);
