@@ -70,3 +70,7 @@ Revised the testing map
 
 Updated the combo method in main.
 Created combo colors
+
+### 6-8
+
+Deleted some methods in circles class and started implementing sliders
