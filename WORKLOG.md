@@ -26,6 +26,9 @@ Edited the score methods, created displayScore and displayCombo, and worked on b
 ## 6/5 & 6/6
 Made score more accurate to match frame rate & edited bomb objects
 
+## 6/8
+Fixed the scoring of bombs and combo counter
+
 ## Bingde
 
 ### 5-22&&5-23
