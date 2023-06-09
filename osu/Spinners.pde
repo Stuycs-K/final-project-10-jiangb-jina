@@ -1,2 +1,2 @@
-public class Spinners{
+public class Spinners {
 }

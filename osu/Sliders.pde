@@ -1,2 +1,2 @@
-public class Sliders{
+public class Sliders {
 }

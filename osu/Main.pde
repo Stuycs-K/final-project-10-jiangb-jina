@@ -209,19 +209,18 @@ void displayScore() {
   String textV = ""+abs(points);
   int length = textV.length();
   int addZero = 8-length;
-  if (points>=0){
+  if (points>=0) {
     display = "";
-  }else{
+  } else {
     display = "-";
   }
   for (int i = 0; i < addZero; i++) {
     display += "0";
   }
   display += abs(points);
-  if (points>=0){
+  if (points>=0) {
     text(display, width-220, 50);
-  }
-  else{
+  } else {
     text(display, width-247, 50);
   }
 }

@@ -14,7 +14,7 @@ public class Circles {
   float frequency;
   boolean hit;
   int AR; //approach rate
-  int comboNumber; 
+  int comboNumber;
   PFont mono;
   int pitch;
   int comboColor;
@@ -134,8 +134,8 @@ public class Circles {
     //file = new SoundFile("do.wav");
     //file.play();
   }
-  
-  public int isBomb(){
+
+  public int isBomb() {
     return 0;
   }
 }
