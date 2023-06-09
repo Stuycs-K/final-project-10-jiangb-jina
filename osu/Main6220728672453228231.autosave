@@ -22,9 +22,6 @@ PImage bg;
 PFont font;
 int leftClick;
 int rightClick;
-int RED = #cd3232;
-int BLUE = #0000FF;
-boolean bomb = false;
 
 void setup() {
   size(1000, 800);
@@ -46,7 +43,7 @@ void setup() {
   map.add(new Circles(200, 150, 2, 3));
   map.add(new Circles(300, 80, 3, 4));
   map.add(new Circles(400, 100, 4, 5));
-  map.add(new Bomb(500, 200, 1, 5));
+  map.add(new Circles(500, 200, 1, 5));
   map.add(new Circles(600, 200, 2, 4));
   map.add(new Circles(700, 200, 3, 3));
   map.add(new Circles(800, 200, 4, 2));
@@ -127,80 +124,58 @@ void updateTemp() {
 
 
 void mouseClicked() {
-  if(mouseButton == LEFT){
+  if (mouseButton == LEFT) {
     leftClick++;
   }
-  if(mouseButton == RIGHT){
+  if (mouseButton == RIGHT) {
     rightClick++;
   }
-  if (map.size()>=3){
+  if (map.size()>=3) {
     if (!(temp[0].hit) && temp[0].checkHit(mouseX, mouseY)) {
       temp[0].hit = true;
       temp[0].playNote();
       temp[0].timeEnd = millis();
       float setUp = temp[0].getTime();
-      if (temp[0].isBomb()==1){
-        Score temp = new Score(setUp, true);
-        combo = temp.combo;
-        points += temp.points;
-      }
-      else{
-        Score temp = new Score(setUp, false);
-        taps++;
-        combo = temp.combo;
-        points += temp.points;
-      }
+      Score temp = new Score(setUp);
+      taps++;
+      combo = temp.combo;
+      points += temp.points;
     } else {
       //display score and taps, 0 added
       //combo returns to 0
       combo = 0;
     }
-  }else if(map.size()==2){
+  } else if (map.size()==2) {
     if (!(ts2[0].hit) && ts2[0].checkHit(mouseX, mouseY)) {
       ts2[0].hit = true;
       ts2[0].playNote();
       ts2[0].timeEnd = millis();
       float setUp = ts2[0].getTime();
-      if (ts2[0].isBomb()==1){
-        Score temp = new Score(setUp, true);
-        combo = temp.combo;
-        points += temp.points;
-      }
-      else{
-        Score temp = new Score(setUp, false);
-        taps++;
-        combo = temp.combo;
-        points += temp.points;
-      }
+      Score temp = new Score(setUp);
+      taps++;
+      combo = temp.combo;
+      points += temp.points;
     } else {
       //display score and taps, 0 added
       //combo returns to 0
       combo = 0;
     }
-  }else if(map.size()==1){
+  } else if (map.size()==1) {
     if (!(ts1[0].hit) && ts1[0].checkHit(mouseX, mouseY)) {
       ts1[0].hit = true;
       ts1[0].playNote();
       ts1[0].timeEnd = millis();
       float setUp = ts1[0].getTime();
-      if (temp[0].isBomb()==1){
-        Score temp = new Score(setUp, true);
-        //should taps be added to if bomb?
-        combo = temp.combo;
-        points += temp.points;
-      }
-      else{
-        Score temp = new Score(setUp, false);
-        taps++;
-        combo = temp.combo;
-        points += temp.points;
-      }
+      Score temp = new Score(setUp);
+      taps++;
+      combo = temp.combo;
+      points += temp.points;
     } else {
       //display score and taps, 0 added
       //combo returns to 0
       combo = 0;
     }
-  }else{
+  } else {
   }
 }
 
@@ -215,7 +190,7 @@ void displayScore() {
     display += "0";
   }
   display += points;
-  text(display, width-220, 50);
+  text(display, width-220, 50);g
 }
 
 void displayCombo() {
@@ -226,7 +201,7 @@ void displayCombo() {
   text(dcombo, 10, height-17);
 }
 
-void displayClicks(){
+void displayClicks() {
   fill(255);
   textSize(30);
   text("" + leftClick, width-35, height-400);

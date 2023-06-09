@@ -17,8 +17,9 @@ public class Circles {
   int comboNumber; 
   PFont mono;
   int pitch;
+  int comboColor;
 
-  public Circles(int x, int y, int CN, int p) {
+  public Circles(int x, int y, int CN, int p, int cColor) {
     xLoc = x;
     yLoc = y;
     comboNumber = CN;
@@ -53,7 +54,7 @@ public class Circles {
       return false;
     }
     circle(xLoc, yLoc, outerRadius);
-    fill(#4B0082);
+    fill(comboColor);
     circle(xLoc, yLoc, innerRadius);
     fill(#32CD32);
     textFont(mono);
