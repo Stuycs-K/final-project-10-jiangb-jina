@@ -24,17 +24,7 @@ int leftClick;
 int rightClick;
 int RED = #cd3232;
 int BLUE = #0000FF;
-PVector[] path = {
-  new PVector(100, 100),
-  new PVector(200, 200),
-  new PVector(300, 100)
-};
-PVector[] expectedPath = {
-  new PVector(100, 100),
-  new PVector(200, 150),
-  new PVector(300, 100)
-};
-float completionThreshold = 10.0;
+Sliders t1;
 
 void setup() {
   frameRate(80);
@@ -75,10 +65,13 @@ void setup() {
   displayClicks();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
+  t1 = new Sliders(200,200,400,200,1);
 }
 
 
 void draw() {
+  t1.display();
+  /*
   background(bg);
   if (map.size()>=3) {
     for (Circles c : temp) {
@@ -116,6 +109,7 @@ void draw() {
   displayScore();
   displayCombo();
   displayClicks();
+  */
 }
 
 void updateTemp() {

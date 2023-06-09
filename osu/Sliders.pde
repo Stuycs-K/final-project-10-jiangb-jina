@@ -10,7 +10,6 @@ public class Sliders{
   PFont mono;
   int comboColor;
   boolean hit;
-  boolean shouldMove;
   
   public Sliders(int x, int y, int eX, int eY, int comboNumber){
     startX = x;
@@ -23,8 +22,29 @@ public class Sliders{
   }
   
   public boolean display(){
+    rect(startX,startY-innerRadius,endX-startX,endY-startY);
+    noStroke();
+    circle(endX,endY,innerRadius);
+    
+    fill(145);
+    beginShape();
+    vertex(startX,startY-innerRadius);
+    curveVertex(endX,startY-innerRadius);
+    curveVertex(endX,startY+innerRadius);
+    int temp = startY-innerRadius;
+    int temp2 = startY+innerRadius;
+    println("yes im here");
+    println("" + startX);
+    println("" + endX);
+    println("" + temp);
+    println("" + temp2);
+    vertex(startX,startY+innerRadius);
+    endShape();
+    
+    return true;
+    /*
     if (innerRadius == outerRadius) {
-      shouldMove = true;
+      
     } else{
       if(!hit){
         
@@ -43,6 +63,7 @@ public class Sliders{
     
     
     return true;
+    */
   }
   
   public boolean checkHit(float cx, float cy) {
