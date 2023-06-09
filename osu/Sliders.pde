@@ -22,25 +22,20 @@ public class Sliders{
   }
   
   public boolean display(){
-    rect(startX,startY-innerRadius,endX-startX,endY-startY);
-    noStroke();
-    circle(endX,endY,innerRadius);
-    
     fill(145);
     beginShape();
-    vertex(startX,startY-innerRadius);
-    curveVertex(endX,startY-innerRadius);
-    curveVertex(endX,startY+innerRadius);
-    int temp = startY-innerRadius;
-    int temp2 = startY+innerRadius;
-    println("yes im here");
-    println("" + startX);
-    println("" + endX);
-    println("" + temp);
-    println("" + temp2);
-    vertex(startX,startY+innerRadius);
-    endShape();
+    vertex(startX,startY-0.5*innerRadius);
+    vertex(endX,startY-0.5*innerRadius);
+    curveVertex(endX-innerRadius,startY);
+    curveVertex(endX,startY-0.5*innerRadius);
+    curveVertex(endX+0.5*innerRadius,startY);
+    curveVertex(endX,startY+0.5*innerRadius);
+    curveVertex(endX+innerRadius,startY);
+    vertex(endX,startY+0.5*innerRadius);
+    vertex(startX,startY+0.5*innerRadius);
+    endShape(CLOSE);
     
+    circle(startX,startY,innerRadius);
     return true;
     /*
     if (innerRadius == outerRadius) {

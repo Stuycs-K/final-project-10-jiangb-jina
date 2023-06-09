@@ -28,7 +28,6 @@ Sliders t1;
 boolean bomb = false;
 
 void setup() {
-  frameRate(80);
   size(1000, 800);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
@@ -71,7 +70,8 @@ void setup() {
 
 
 void draw() {
-  //t1.display();
+  t1.display();
+  /*
   background(bg);
   if (map.size()>=3) {
     for (Circles c : temp) {
@@ -109,6 +109,7 @@ void draw() {
   displayScore();
   displayCombo();
   displayClicks();
+  */
 }
 
 void updateTemp() {
