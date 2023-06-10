@@ -73,6 +73,7 @@ void draw() {
   background(bg);
   if(!t1.done){
     t1.display();
+    t1.checkHit(mouseX,mouseY);
   }
   /*
   if (map.size()>=3) {

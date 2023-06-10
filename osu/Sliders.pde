@@ -63,8 +63,9 @@ public class Sliders{
   
   public boolean checkHit(float cx, float cy) {
     if (!hit && outerRadius > innerRadius) {
-      float d = dist(cx, cy, startX, startY);
+      float d = dist(cx, cy, tempX, tempY);
       if (d < innerRadius) {
+        //println("hit");
         return true;
       }
     }
