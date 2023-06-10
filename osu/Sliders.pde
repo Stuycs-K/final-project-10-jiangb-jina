@@ -88,6 +88,6 @@ public class Sliders{
   
   public void coverSlider(){
     fill(255);
-    rect(startX-innerRadius,startY-innerRadius,endX-startX+2*innerRadius,2*innerRadius);
+    rect(startX-0.5*innerRadius,startY-0.5*innerRadius,endX-startX+innerRadius,innerRadius);
   }
 }
