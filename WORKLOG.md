@@ -83,3 +83,8 @@ Created combo colors
 ### 6-8
 
 Deleted some methods in circles class and started implementing sliders
+
+
+### 6-9
+
+Updated sliders so that it is ready for scores. 
