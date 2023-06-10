@@ -29,6 +29,9 @@ Made score more accurate to match frame rate & edited bomb objects
 ## 6/8
 Fixed the scoring of bombs and combo counter
 
+## 6/9
+Made negative scoring and worked on spinners
+
 ## Bingde
 
 ### 5-22&&5-23
