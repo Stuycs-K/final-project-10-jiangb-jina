@@ -1,4 +1,3 @@
-
 public class Sliders{
   int startX;
   int startY;
@@ -14,6 +13,7 @@ public class Sliders{
   int comboColor;
   boolean done;
   int pitch;
+  int startT;
   
   public Sliders(int x, int y, int eX, int eY, int comboNumber, int p){
     startX = x;
@@ -27,6 +27,7 @@ public class Sliders{
     this.comboNumber = comboNumber;
     done = false;
     pitch = p;
+    startT = millis();
   }
   
   public boolean display(){
@@ -71,6 +72,8 @@ public class Sliders{
       }
     return false;
   }
+  
+  
   
   public void updateShrink() {
     if (outerRadius > innerRadius) {
