@@ -73,7 +73,9 @@ void draw() {
   background(bg);
   if(!t1.done){
     t1.display();
-    t1.checkHit(mouseX,mouseY);
+    if(t1.checkHit(mouseX,mouseY)){
+      points += 5;
+    }
   }
   /*
   if (map.size()>=3) {
@@ -108,11 +110,11 @@ void draw() {
       }
     }
   }
-  delay(100);
+  */
+  delay(50);
   displayScore();
   displayCombo();
   displayClicks();
-  */
 }
 
 void updateTemp() {
