@@ -24,10 +24,36 @@ Sliders t1, t2;
 boolean bomb = false;
 boolean sliderFailed = false;
 int numOb = mapC.size()+mapSl.size()+mapSp.size();
+boolean startScreen = true;
+boolean map1 = false;
+PImage Osu;
+
+void drawMainMenu() {
+  background (255);
+  Osu = loadImage("Osu.png");
+  imageMode(CENTER);
+  image(Osu, 500, 220, 350, 350);
+  fill(0);
+  rect(100, 500, 200, 100);
+  rect(400, 500, 200, 100);
+  rect(700, 500, 200, 100);
+  textSize(70);
+  fill(255);
+  text("map 1", 110, 575);
+  text("map 2", 410, 575);
+  text("map 3", 710, 575);
+}
 
 void setup() {
   smooth();
   size(1000, 800);
+  if (startScreen) {
+    drawMainMenu();
+  }
+}
+
+void drawMap1() {
+  background(255);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
   s3 = new SoundFile(this, "mi.wav");
@@ -49,22 +75,10 @@ void setup() {
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
   mapC.add(new Circles(400, 100, 5, 5, BLUE));
   mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve"));
-  /*
-  mapC.add(new Bomb(500, 200, 1, 5));
-   mapC.add(new Circles(600, 200, 2, 4, #32a6cd));
-   mapC.add(new Circles(700, 200, 3, 3, #32a6cd));
-   mapC.add(new Circles(800, 200, 4, 2, #32a6cd));
-   mapC.add(new Circles(400, 400, 1, 1, #32a6cd));
-   mapC.add(new Circles(300, 400, 2, 1, RED));
-   mapC.add(new Circles(200, 400, 3, 2, RED));
-   mapC.add(new Circles(100, 400, 4, 3, RED));
-   mapC.add(new Circles(500, 600, 1, 3, RED));
-   mapC.add(new Circles(600, 600, 2, 2, RED));
-   mapC.add(new Circles(700, 600, 3, 2, RED));
-   */
+  bg = loadImage("newset.jpg");
+  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
   numOb = mapC.size()+mapSl.size()+mapSp.size();
   updateTemp();
-  bg = loadImage("newset.jpg");
   displayScore();
   displayCombo();
   displayClicks();
@@ -72,63 +86,70 @@ void setup() {
   //file.play();
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
-  //t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
 }
 
 
 void draw() {
-  background(bg);
-  if (!t1.done) {
-    t1.display();
-    //can't start before the outer circle meets the inner
-    if (mousePressed && t1.checkHit(mouseX, mouseY) && sliderFailed == false && millis()-t1.startT>1500) {
-      points += 5;
-      keyboard.get(t1.pitch-1).play();
+  if (startScreen) {
+    if (mousePressed && 100<mouseX && 300>mouseX && 500<mouseY && 600>mouseY) {
+      startScreen = false;
+      map1 = true;
+      drawMap1();
+    }
+  }
+  if (!startScreen) {
+    background(bg);
+    if (!t1.done) {
+      t1.display();
+      //can't start before the outer circle meets the inner
+      if (mousePressed && t1.checkHit(mouseX, mouseY) && sliderFailed == false && millis()-t1.startT>1500) {
+        points += 5;
+        keyboard.get(t1.pitch-1).play();
+      } else {
+        t1.done = false;
+        //once you miss you can't get points from it anymore
+        if (millis()-t1.startT>1500) {
+          sliderFailed = true;
+        }
+      }
+    }
+    if (numOb>=3) {
+      for (Circles c : temp) {
+        if (c.display()) {
+          c.update();
+        } else {
+          mapC.remove(c);
+          keyboard.get(c.pitch-1).play();
+          updateTemp();
+        }
+      }
+    } else if (mapC.size()==2) {
+      for (Circles c : ts2) {
+        if (c.display()) {
+          c.update();
+        } else {
+          mapC.remove(c);
+          keyboard.get(c.pitch-1).play();
+          updateTemp();
+        }
+      }
     } else {
-      t1.done = false;
-      //once you miss you can't get points from it anymore
-      if (millis()-t1.startT>1500) {
-        sliderFailed = true;
+      for (Circles c : ts1) {
+        if (c.display()) {
+          c.update();
+        } else {
+          mapC.remove(c);
+          keyboard.get(c.pitch-1).play();
+          updateTemp();
+          noLoop();
+        }
       }
     }
-  }
-  if (numOb>=3) {
-    for (Circles c : temp) {
-      if (c.display()) {
-        c.update();
-      } else {
-        mapC.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-      }
-    }
-  } else if (mapC.size()==2) {
-    for (Circles c : ts2) {
-      if (c.display()) {
-        c.update();
-      } else {
-        mapC.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-      }
-    }
-  } else {
-    for (Circles c : ts1) {
-      if (c.display()) {
-        c.update();
-      } else {
-        mapC.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-        noLoop();
-      }
-    }
-  }
-  */
     delay(50);
-  displayScore();
-  displayCombo();
-  displayClicks();
+    displayScore();
+    displayCombo();
+    displayClicks();
+  }
 }
 
 void updateTemp() {

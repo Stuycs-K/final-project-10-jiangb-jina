@@ -1,10 +1,7 @@
 public class Sliders {
-  float startX;
-  float startY;
-  float endX;
-  float endY;
-  float tempX;
-  float tempY;
+  float startX, startY;
+  float endX, endY;
+  float tempX, tempY;
   int outerRadius = 200;
   int innerRadius = 100;
   int AR;
@@ -54,6 +51,7 @@ public class Sliders {
     fill(145);
     strokeWeight(1);
     circle(startX, startY, innerRadius);
+    text(comboNumber, startX, startY);
     if (innerRadius == outerRadius) {
       if (tempX!=endX) {
         updateMove();
