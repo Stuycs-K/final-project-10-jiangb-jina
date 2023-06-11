@@ -1,12 +1,12 @@
-public class Sliders{
+public class Sliders {
   int startX;
   int startY;
   int endX;
   int endY;
-  int tempX;
-  int tempY;
-  int outerRadius = 250;
-  int innerRadius = 150;
+  float tempX;
+  float tempY;
+  int outerRadius = 200;
+  int innerRadius = 100;
   int AR;
   int comboNumber;
   PFont mono;
@@ -14,11 +14,13 @@ public class Sliders{
   boolean done;
   int pitch;
   int startT;
-  
-  public Sliders(int x, int y, int eX, int eY, int comboNumber, int p){
+  //horizontal, semi, sine
+  String type;
+
+  public Sliders(int x, int y, int eX, int eY, int comboNumber, int p, String s) {
     startX = x;
-    startY = y;
     endX = eX;
+    startY = y;
     endY = eY;
     tempX = x;
     tempY = y;
@@ -28,70 +30,73 @@ public class Sliders{
     done = false;
     pitch = p;
     startT = millis();
+    type = s;
   }
-  
-  public boolean display(){
-    fill(145);
-    beginShape();
-    vertex(startX,startY-0.5*innerRadius);
-    vertex(endX,startY-0.5*innerRadius);
-    curveVertex(endX-innerRadius,startY);
-    curveVertex(endX,startY-0.5*innerRadius);
-    curveVertex(endX+0.5*innerRadius,startY);
-    curveVertex(endX,startY+0.5*innerRadius);
-    curveVertex(endX+innerRadius,startY-0.5*innerRadius);
-    vertex(endX,startY+0.5*innerRadius);
-    vertex(startX,startY+0.5*innerRadius);
-    endShape(CLOSE);
-    
-    circle(startX,startY,innerRadius);
-    if (innerRadius == outerRadius) {
-      if(tempX!=endX){
-        updateMove();
-        circle(tempX,tempY,innerRadius);
-      }else{
-        coverSlider();
-        done = true;
-      }
-    } else{
-      updateShrink();
-      coverCircle();
-      noFill();
-      circle(startX, startY, outerRadius);
-      fill(comboColor);
-      circle(startX, startY, innerRadius);
+
+  public boolean display() {
+    noFill();
+    strokeWeight(7);
+    if (type.equals("horizontal")) {
+      line(startX, startY, endX, endY);
     }
-    return true;
-  }
-  
-  public boolean checkHit(float cx, float cy) {
-    float d = dist(cx, cy, tempX, tempY);
+    else if (type.equals("semi")){
+      arc(endX-200, startY, endX-startX, endX-startX, 0, PI);
+    }
+    fill(145);
+    strokeWeight(1);
+      circle(startX, startY, innerRadius);
+      if (innerRadius == outerRadius) {
+        if (tempX!=endX) {
+          updateMove();
+          circle(tempX, tempY, innerRadius);
+        } else {
+          coverSlider();
+          done = true;
+        }
+      } else {
+        updateShrink();
+        coverCircle();
+        noFill();
+        circle(startX, startY, outerRadius);
+        fill(comboColor);
+        circle(startX, startY, innerRadius);
+      }
+      return true;
+    }
+
+    public boolean checkHit(float cx, float cy) {
+      float d = dist(cx, cy, tempX, tempY);
       if (d < innerRadius) {
         //println("hit");
         return true;
       }
-    return false;
-  }
-  
-  
-  
-  public void updateShrink() {
-    if (outerRadius > innerRadius) {
-      outerRadius -= AR;
+      return false;
+    }
+
+
+
+    public void updateShrink() {
+      if (outerRadius > innerRadius) {
+        outerRadius -= AR;
+      }
+    }
+
+    public void updateMove() {
+      tempX += AR;
+      if (type.equals("semi")){
+        float x0 = (endX+startX)/2;
+        float r = (endX-startX)/2;
+        tempY = startY+sqrt(sq(r)-sq(tempX-x0));
+      }
+    }
+
+    public void coverCircle() {
+      fill(255);
+      circle(startX, startY, outerRadius);
+    }
+//can replace this with just removing the slider from the arraylist?
+    public void coverSlider() {
+      fill(255);
+      rect(startX-0.5*innerRadius, startY-0.5*innerRadius, endX-startX+innerRadius, innerRadius);
     }
   }
-  
-  public void updateMove(){
-    tempX += AR;
-  }
-  
-  public void coverCircle() {
-    fill(255);
-    circle(startX, startY, outerRadius);
-  }
-  
-  public void coverSlider(){
-    fill(255);
-    rect(startX-0.5*innerRadius,startY-0.5*innerRadius,endX-startX+innerRadius,innerRadius);
-  }
-}

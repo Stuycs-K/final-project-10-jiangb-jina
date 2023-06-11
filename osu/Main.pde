@@ -26,12 +26,13 @@ int leftClick;
 int rightClick;
 int RED = #cd3232;
 int BLUE = #0000FF;
-Sliders t1;
+Sliders t1, t2;
 boolean bomb = false;
 boolean sliderFailed = false;
 int numOb = mapC.size()+mapSl.size()+mapSp.size();
 
 void setup() {
+  smooth();
   size(1000, 800);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
@@ -71,7 +72,9 @@ void setup() {
   displayClicks();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
-  t1 = new Sliders(200,200,400,200,1,3);
+  //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
+  t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
+  //t2 = new Sliders(300, 400, 700, 400, 1, 3, "semi");
 }
 
 
