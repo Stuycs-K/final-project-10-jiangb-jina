@@ -1,12 +1,8 @@
-SoundFile s1;
-SoundFile s2;
-SoundFile s3;
-SoundFile s4;
-SoundFile s5;
-SoundFile s6;
-SoundFile s7;
+SoundFile s1, s2, s3, s4, s5, s6, s7;
 ArrayList<SoundFile> keyboard = new ArrayList<SoundFile>();
-ArrayList<Circles> map = new ArrayList<Circles>();
+ArrayList<Circles> mapC = new ArrayList<Circles>();
+ArrayList<Sliders> mapSl = new ArrayList<Sliders>();
+ArrayList<Spinners> mapSp = new ArrayList<Spinners>();
 //a temporary array to make sure only 3 objects show up on the screen at the right time
 //ts2 and ts1 is for when map has less than 3 objects left
 Circles[] temp = new Circles[3];
@@ -24,11 +20,40 @@ int leftClick;
 int rightClick;
 int RED = #cd3232;
 int BLUE = #0000FF;
-Sliders t1;
+Sliders t1, t2;
 boolean bomb = false;
+boolean sliderFailed = false;
+int numOb = mapC.size()+mapSl.size()+mapSp.size();
+boolean startScreen = true;
+boolean map1 = false;
+PImage Osu;
+
+void drawMainMenu() {
+  background (255);
+  Osu = loadImage("Osu.png");
+  imageMode(CENTER);
+  image(Osu, 500, 220, 350, 350);
+  fill(0);
+  rect(100, 500, 200, 100);
+  rect(400, 500, 200, 100);
+  rect(700, 500, 200, 100);
+  textSize(70);
+  fill(255);
+  text("map 1", 110, 575);
+  text("map 2", 410, 575);
+  text("map 3", 710, 575);
+}
 
 void setup() {
+  smooth();
   size(1000, 800);
+  if (startScreen) {
+    drawMainMenu();
+  }
+}
+
+void drawMap1() {
+  background(255);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
   s3 = new SoundFile(this, "mi.wav");
@@ -43,96 +68,104 @@ void setup() {
   keyboard.add(s5);
   keyboard.add(s6);
   keyboard.add(s7);
-  map.add(new Bomb(300, 450, 1, 5));
-  map.add(new Circles(100, 100, 2, 3, BLUE));
-  map.add(new Circles(200, 150, 3, 3, BLUE));
-  map.add(new Circles(300, 80, 4, 4, BLUE));
-  map.add(new Circles(400, 100, 5, 5, BLUE));
-  map.add(new Bomb(500, 200, 1, 5));
-  map.add(new Circles(600, 200, 2, 4, #32a6cd));
-  map.add(new Circles(700, 200, 3, 3, #32a6cd));
-  map.add(new Circles(800, 200, 4, 2, #32a6cd));
-  map.add(new Circles(400, 400, 1, 1, #32a6cd));
-  map.add(new Circles(300, 400, 2, 1, RED));
-  map.add(new Circles(200, 400, 3, 2, RED));
-  map.add(new Circles(100, 400, 4, 3, RED));
-  map.add(new Circles(500, 600, 1, 3, RED));
-  map.add(new Circles(600, 600, 2, 2, RED));
-  map.add(new Circles(700, 600, 3, 2, RED));
-  updateTemp();
+  //update numOb later
+  mapC.add(new Bomb(300, 450, 1, 5));
+  mapC.add(new Circles(100, 100, 2, 3, BLUE));
+  mapC.add(new Circles(200, 150, 3, 3, BLUE));
+  mapC.add(new Circles(300, 80, 4, 4, BLUE));
+  mapC.add(new Circles(400, 100, 5, 5, BLUE));
+  mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve"));
   bg = loadImage("newset.jpg");
+  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
+  numOb = mapC.size()+mapSl.size()+mapSp.size();
+  updateTemp();
   displayScore();
   displayCombo();
   displayClicks();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
-  t1 = new Sliders(200,200,400,200,1,3);
+  //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
+  //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
 }
 
 
 void draw() {
-  background(bg);
-  if(!t1.done){
-    t1.display();
-    if(t1.checkHit(mouseX,mouseY)){
-      points += 5;
-      keyboard.get(t1.pitch-1).play();
+  if (startScreen) {
+    if (mousePressed && 100<mouseX && 300>mouseX && 500<mouseY && 600>mouseY) {
+      startScreen = false;
+      map1 = true;
+      drawMap1();
     }
   }
-  /*
-  if (map.size()>=3) {
-    for (Circles c : temp) {
-      if (c.display()) {
-        c.update();
+  if (!startScreen) {
+    background(bg);
+    if (!t1.done) {
+      t1.display();
+      //can't start before the outer circle meets the inner
+      if (mousePressed && t1.checkHit(mouseX, mouseY) && sliderFailed == false && millis()-t1.startT>1500) {
+        points += 5;
+        keyboard.get(t1.pitch-1).play();
       } else {
-        map.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
+        t1.done = false;
+        //once you miss you can't get points from it anymore
+        if (millis()-t1.startT>1500) {
+          sliderFailed = true;
+        }
       }
     }
-  } else if (map.size()==2) {
-    for (Circles c : ts2) {
-      if (c.display()) {
-        c.update();
-      } else {
-        map.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
+    if (numOb>=3) {
+      for (Circles c : temp) {
+        if (c.display()) {
+          c.update();
+        } else {
+          mapC.remove(c);
+          keyboard.get(c.pitch-1).play();
+          updateTemp();
+        }
+      }
+    } else if (mapC.size()==2) {
+      for (Circles c : ts2) {
+        if (c.display()) {
+          c.update();
+        } else {
+          mapC.remove(c);
+          keyboard.get(c.pitch-1).play();
+          updateTemp();
+        }
+      }
+    } else {
+      for (Circles c : ts1) {
+        if (c.display()) {
+          c.update();
+        } else {
+          mapC.remove(c);
+          keyboard.get(c.pitch-1).play();
+          updateTemp();
+          noLoop();
+        }
       }
     }
-  } else {
-    for (Circles c : ts1) {
-      if (c.display()) {
-        c.update();
-      } else {
-        map.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-        noLoop();
-      }
-    }
+    delay(50);
+    displayScore();
+    displayCombo();
+    displayClicks();
   }
-  */
-  delay(50);
-  displayScore();
-  displayCombo();
-  displayClicks();
 }
 
 void updateTemp() {
-  if (map.size()>=3) {
+  if (mapC.size()>=3) {
     for (int i = 0; i < 3; i++) {
-      if (i < map.size()) {
-        temp[i] = map.get(i);
+      if (i < mapC.size()) {
+        temp[i] = mapC.get(i);
       } else {
         temp[i] = null;
       }
     }
-  } else if (map.size()==2) {
-    ts2[0] = map.get(0);
-    ts2[1] = map.get(1);
-  } else if (map.size()==1) {
-    ts1[0] = map.get(0);
+  } else if (mapC.size()==2) {
+    ts2[0] = mapC.get(0);
+    ts2[1] = mapC.get(1);
+  } else if (mapC.size()==1) {
+    ts1[0] = mapC.get(0);
   } else {
   }
 }
@@ -144,7 +177,7 @@ void mouseClicked() {
   if (mouseButton == RIGHT) {
     rightClick++;
   }
-  if (map.size()>=3) {
+  if (mapC.size()>=3) {
     if (!(temp[0].hit) && temp[0].checkHit(mouseX, mouseY)) {
       temp[0].hit = true;
       temp[0].timeEnd = millis();
@@ -166,7 +199,7 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  } else if (map.size()==2) {
+  } else if (mapC.size()==2) {
     if (!(ts2[0].hit) && ts2[0].checkHit(mouseX, mouseY)) {
       ts2[0].hit = true;
       ts2[0].timeEnd = millis();
@@ -186,7 +219,7 @@ void mouseClicked() {
       //combo returns to 0
       combo = 0;
     }
-  } else if (map.size()==1) {
+  } else if (mapC.size()==1) {
     if (!(ts1[0].hit) && ts1[0].checkHit(mouseX, mouseY)) {
       ts1[0].hit = true;
       ts1[0].timeEnd = millis();
