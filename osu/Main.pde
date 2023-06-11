@@ -73,63 +73,62 @@ void setup() {
   //file = new SoundFile(this, "132.mp3");
   //file.play();
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
-  t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
-  //t2 = new Sliders(300, 400, 700, 400, 1, 3, "semi");
+  //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
+  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
 }
 
 
 void draw() {
   background(bg);
-  if(!t1.done){
+  if (!t1.done) {
     t1.display();
     //can't start before the outer circle meets the inner
-    if(mousePressed && t1.checkHit(mouseX,mouseY) && sliderFailed == false && millis()-t1.startT>1500){
+    if (mousePressed && t1.checkHit(mouseX, mouseY) && sliderFailed == false && millis()-t1.startT>1500) {
       points += 5;
       keyboard.get(t1.pitch-1).play();
-    }
-    else{
+    } else {
       t1.done = false;
       //once you miss you can't get points from it anymore
-      if (millis()-t1.startT>1500){
+      if (millis()-t1.startT>1500) {
         sliderFailed = true;
       }
     }
   }
   /*
   //use numOb for this instead?
-  if (mapC.size()>=3) {
-    for (Circles c : temp) {
-      if (c.display()) {
-        c.update();
-      } else {
-        mapC.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-      }
-    }
-  } else if (mapC.size()==2) {
-    for (Circles c : ts2) {
-      if (c.display()) {
-        c.update();
-      } else {
-        mapC.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-      }
-    }
-  } else {
-    for (Circles c : ts1) {
-      if (c.display()) {
-        c.update();
-      } else {
-        mapC.remove(c);
-        keyboard.get(c.pitch-1).play();
-        updateTemp();
-        noLoop();
-      }
-    }
-  }
-  */
+   if (mapC.size()>=3) {
+   for (Circles c : temp) {
+   if (c.display()) {
+   c.update();
+   } else {
+   mapC.remove(c);
+   keyboard.get(c.pitch-1).play();
+   updateTemp();
+   }
+   }
+   } else if (mapC.size()==2) {
+   for (Circles c : ts2) {
+   if (c.display()) {
+   c.update();
+   } else {
+   mapC.remove(c);
+   keyboard.get(c.pitch-1).play();
+   updateTemp();
+   }
+   }
+   } else {
+   for (Circles c : ts1) {
+   if (c.display()) {
+   c.update();
+   } else {
+   mapC.remove(c);
+   keyboard.get(c.pitch-1).play();
+   updateTemp();
+   noLoop();
+   }
+   }
+   }
+   */
   delay(50);
   displayScore();
   displayCombo();
