@@ -28,6 +28,9 @@ public class Spinners{
     if(mouseX < width/2 && mouseY > height/2){
       c4 = true;
     }
+  }
+  
+  public boolean checkRev(){
     if(c1&&c2&&c3&&c4){
       rev++;
       c1 = false;
@@ -35,6 +38,9 @@ public class Spinners{
       c3 = false;
       c4 = false;
       println("" + rev + " revs");
+      return true;
+    }else{
+      return false;
     }
   }
   

@@ -78,6 +78,9 @@ void draw() {
     sp1.draw();
     println("this happened");
     sp1.currentDuration++;
+    if(sp1.checkRev()){
+      points += 1000;
+    }
   }
   /*
   if(!t1.done){
