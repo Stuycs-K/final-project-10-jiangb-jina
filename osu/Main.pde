@@ -1,10 +1,4 @@
-SoundFile s1;
-SoundFile s2;
-SoundFile s3;
-SoundFile s4;
-SoundFile s5;
-SoundFile s6;
-SoundFile s7;
+SoundFile s1, s2, s3, s4, s5, s6, s7;
 ArrayList<SoundFile> keyboard = new ArrayList<SoundFile>();
 ArrayList<Circles> mapC = new ArrayList<Circles>();
 ArrayList<Sliders> mapSl = new ArrayList<Sliders>();
@@ -54,17 +48,21 @@ void setup() {
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
   mapC.add(new Circles(400, 100, 5, 5, BLUE));
+  mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve"));
+  /*
   mapC.add(new Bomb(500, 200, 1, 5));
-  mapC.add(new Circles(600, 200, 2, 4, #32a6cd));
-  mapC.add(new Circles(700, 200, 3, 3, #32a6cd));
-  mapC.add(new Circles(800, 200, 4, 2, #32a6cd));
-  mapC.add(new Circles(400, 400, 1, 1, #32a6cd));
-  mapC.add(new Circles(300, 400, 2, 1, RED));
-  mapC.add(new Circles(200, 400, 3, 2, RED));
-  mapC.add(new Circles(100, 400, 4, 3, RED));
-  mapC.add(new Circles(500, 600, 1, 3, RED));
-  mapC.add(new Circles(600, 600, 2, 2, RED));
-  mapC.add(new Circles(700, 600, 3, 2, RED));
+   mapC.add(new Circles(600, 200, 2, 4, #32a6cd));
+   mapC.add(new Circles(700, 200, 3, 3, #32a6cd));
+   mapC.add(new Circles(800, 200, 4, 2, #32a6cd));
+   mapC.add(new Circles(400, 400, 1, 1, #32a6cd));
+   mapC.add(new Circles(300, 400, 2, 1, RED));
+   mapC.add(new Circles(200, 400, 3, 2, RED));
+   mapC.add(new Circles(100, 400, 4, 3, RED));
+   mapC.add(new Circles(500, 600, 1, 3, RED));
+   mapC.add(new Circles(600, 600, 2, 2, RED));
+   mapC.add(new Circles(700, 600, 3, 2, RED));
+   */
+  numOb = mapC.size()+mapSl.size()+mapSp.size();
   updateTemp();
   bg = loadImage("newset.jpg");
   displayScore();
@@ -74,7 +72,7 @@ void setup() {
   //file.play();
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
-  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
+  //t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
 }
 
 
@@ -94,42 +92,40 @@ void draw() {
       }
     }
   }
-  /*
-  //use numOb for this instead?
-   if (mapC.size()>=3) {
-   for (Circles c : temp) {
-   if (c.display()) {
-   c.update();
-   } else {
-   mapC.remove(c);
-   keyboard.get(c.pitch-1).play();
-   updateTemp();
-   }
-   }
-   } else if (mapC.size()==2) {
-   for (Circles c : ts2) {
-   if (c.display()) {
-   c.update();
-   } else {
-   mapC.remove(c);
-   keyboard.get(c.pitch-1).play();
-   updateTemp();
-   }
-   }
-   } else {
-   for (Circles c : ts1) {
-   if (c.display()) {
-   c.update();
-   } else {
-   mapC.remove(c);
-   keyboard.get(c.pitch-1).play();
-   updateTemp();
-   noLoop();
-   }
-   }
-   }
-   */
-  delay(50);
+  if (numOb>=3) {
+    for (Circles c : temp) {
+      if (c.display()) {
+        c.update();
+      } else {
+        mapC.remove(c);
+        keyboard.get(c.pitch-1).play();
+        updateTemp();
+      }
+    }
+  } else if (mapC.size()==2) {
+    for (Circles c : ts2) {
+      if (c.display()) {
+        c.update();
+      } else {
+        mapC.remove(c);
+        keyboard.get(c.pitch-1).play();
+        updateTemp();
+      }
+    }
+  } else {
+    for (Circles c : ts1) {
+      if (c.display()) {
+        c.update();
+      } else {
+        mapC.remove(c);
+        keyboard.get(c.pitch-1).play();
+        updateTemp();
+        noLoop();
+      }
+    }
+  }
+  */
+    delay(50);
   displayScore();
   displayCombo();
   displayClicks();
