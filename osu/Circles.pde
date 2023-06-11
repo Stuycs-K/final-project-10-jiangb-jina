@@ -24,8 +24,8 @@ public class Circles {
     yLoc = y;
     comboNumber = CN;
     pitch = p;
-    outerRadius = 250;
-    innerRadius = 150;
+    outerRadius = 200;
+    innerRadius = 100;
     timeStart = millis();
     //println(timeStart);
     //need to make sure that timeEnd and expectedEnd won't ever give a false positive result
