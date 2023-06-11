@@ -68,7 +68,7 @@ void setup() {
   //file = new SoundFile(this, "132.mp3");
   //file.play();
   t1 = new Sliders(200,200,400,200,1,3);
-  sp1 = new Spinners(300);
+  sp1 = new Spinners(50);
 }
 
 
@@ -76,6 +76,7 @@ void draw() {
   background(bg);
   if(sp1.currentDuration<sp1.duration){
     sp1.draw();
+    println("this happened");
     sp1.currentDuration++;
   }
   /*
