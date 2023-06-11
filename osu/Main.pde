@@ -22,6 +22,7 @@ int RED = #cd3232;
 int BLUE = #0000FF;
 Sliders t1, t2;
 boolean bomb = false;
+Spinners sp1;
 boolean sliderFailed = false;
 int numOb = mapC.size()+mapSl.size()+mapSp.size();
 boolean startScreen = true;
@@ -86,6 +87,7 @@ void drawMap1() {
   //file.play();
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
+  sp1 = new Spinners(50);
 }
 
 
