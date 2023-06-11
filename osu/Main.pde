@@ -24,6 +24,7 @@ int leftClick;
 int rightClick;
 int RED = #cd3232;
 int BLUE = #0000FF;
+Sliders t1;
 boolean bomb = false;
 
 void setup() {
@@ -65,11 +66,20 @@ void setup() {
   displayClicks();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
+  t1 = new Sliders(200,200,400,200,1,3);
 }
 
 
 void draw() {
   background(bg);
+  if(!t1.done){
+    t1.display();
+    if(t1.checkHit(mouseX,mouseY)){
+      points += 5;
+      keyboard.get(t1.pitch-1).play();
+    }
+  }
+  /*
   if (map.size()>=3) {
     for (Circles c : temp) {
       if (c.display()) {
@@ -102,7 +112,8 @@ void draw() {
       }
     }
   }
-  delay(100);
+  */
+  delay(50);
   displayScore();
   displayCombo();
   displayClicks();
@@ -126,7 +137,6 @@ void updateTemp() {
   }
 }
 
-
 void mouseClicked() {
   if (mouseButton == LEFT) {
     leftClick++;
@@ -137,7 +147,6 @@ void mouseClicked() {
   if (map.size()>=3) {
     if (!(temp[0].hit) && temp[0].checkHit(mouseX, mouseY)) {
       temp[0].hit = true;
-      temp[0].playNote();
       temp[0].timeEnd = millis();
       float setUp = temp[0].getTime();
       println(setUp);
@@ -160,7 +169,6 @@ void mouseClicked() {
   } else if (map.size()==2) {
     if (!(ts2[0].hit) && ts2[0].checkHit(mouseX, mouseY)) {
       ts2[0].hit = true;
-      ts2[0].playNote();
       ts2[0].timeEnd = millis();
       float setUp = ts2[0].getTime();
       if (ts2[0].isBomb()==1) {
@@ -181,7 +189,6 @@ void mouseClicked() {
   } else if (map.size()==1) {
     if (!(ts1[0].hit) && ts1[0].checkHit(mouseX, mouseY)) {
       ts1[0].hit = true;
-      ts1[0].playNote();
       ts1[0].timeEnd = millis();
       float setUp = ts1[0].getTime();
       if (temp[0].isBomb()==1) {

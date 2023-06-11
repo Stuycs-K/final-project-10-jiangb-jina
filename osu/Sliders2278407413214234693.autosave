@@ -1,4 +1,3 @@
-
 public class Sliders{
   int startX;
   int startY;
@@ -65,7 +64,7 @@ public class Sliders{
   
   public boolean checkHit(float cx, float cy) {
     float d = dist(cx, cy, tempX, tempY);
-      if (d < innerRadius) {
+      if (d < innerRadius && mousePressed()) {
         //println("hit");
         return true;
       }
