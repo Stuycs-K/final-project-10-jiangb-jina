@@ -26,6 +26,7 @@ int RED = #cd3232;
 int BLUE = #0000FF;
 Sliders t1;
 boolean bomb = false;
+Spinners sp1;
 
 void setup() {
   size(1000, 800);
@@ -67,11 +68,17 @@ void setup() {
   //file = new SoundFile(this, "132.mp3");
   //file.play();
   t1 = new Sliders(200,200,400,200,1,3);
+  sp1 = new Spinners(300);
 }
 
 
 void draw() {
   background(bg);
+  if(sp1.currentDuration<sp1.duration){
+    sp1.draw();
+    sp1.currentDuration++;
+  }
+  /*
   if(!t1.done){
     t1.display();
     if(t1.checkHit(mouseX,mouseY)){
@@ -79,7 +86,6 @@ void draw() {
       keyboard.get(t1.pitch-1).play();
     }
   }
-  /*
   if (map.size()>=3) {
     for (Circles c : temp) {
       if (c.display()) {
