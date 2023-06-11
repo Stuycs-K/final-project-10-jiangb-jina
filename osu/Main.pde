@@ -65,7 +65,7 @@ void setup() {
   displayClicks();
   //file = new SoundFile(this, "132.mp3");
   //file.play();
-  t1 = new Sliders(200,200,400,200,1);
+  t1 = new Sliders(200,200,400,200,1,3);
 }
 
 
@@ -75,6 +75,7 @@ void draw() {
     t1.display();
     if(t1.checkHit(mouseX,mouseY)){
       points += 5;
+      keyboard.get(t1.pitch-1).play();
     }
   }
   /*

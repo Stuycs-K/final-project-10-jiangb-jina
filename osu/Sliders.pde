@@ -12,8 +12,9 @@ public class Sliders{
   PFont mono;
   int comboColor;
   boolean done;
+  int pitch;
   
-  public Sliders(int x, int y, int eX, int eY, int comboNumber){
+  public Sliders(int x, int y, int eX, int eY, int comboNumber, int p){
     startX = x;
     startY = y;
     endX = eX;
@@ -24,6 +25,7 @@ public class Sliders{
     mono = createFont("andalemo.ttf", 72);
     this.comboNumber = comboNumber;
     done = false;
+    pitch = p;
   }
   
   public boolean display(){
@@ -63,7 +65,7 @@ public class Sliders{
   public boolean checkHit(float cx, float cy) {
     float d = dist(cx, cy, tempX, tempY);
       if (d < innerRadius) {
-        println("hit");
+        //println("hit");
         return true;
       }
     return false;
