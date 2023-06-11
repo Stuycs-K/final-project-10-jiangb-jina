@@ -11,7 +11,6 @@ public class Sliders{
   int comboNumber;
   PFont mono;
   int comboColor;
-  boolean hit;
   boolean done;
   
   public Sliders(int x, int y, int eX, int eY, int comboNumber){
@@ -62,18 +61,16 @@ public class Sliders{
   }
   
   public boolean checkHit(float cx, float cy) {
-    if (!hit && outerRadius > innerRadius) {
-      float d = dist(cx, cy, tempX, tempY);
+    float d = dist(cx, cy, tempX, tempY);
       if (d < innerRadius) {
-        //println("hit");
+        println("hit");
         return true;
       }
-    }
     return false;
   }
   
   public void updateShrink() {
-    if (!hit && outerRadius > innerRadius) {
+    if (outerRadius > innerRadius) {
       outerRadius -= AR;
     }
   }
