@@ -90,6 +90,52 @@ void drawMap1() {
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
   sp1 = new Spinners(50);
+  mapSp.add(sp1);
+}
+
+void drawMap2() {
+  background(255);
+  s1 = new SoundFile(this, "do.wav");
+  s2 = new SoundFile(this, "re.wav");
+  s3 = new SoundFile(this, "mi.wav");
+  s4 = new SoundFile(this, "fa.wav");
+  s5 = new SoundFile(this, "sol.wav");
+  s6 = new SoundFile(this, "la.wav");
+  s7 = new SoundFile(this, "si.wav");
+  keyboard.add(s1);
+  keyboard.add(s2);
+  keyboard.add(s3);
+  keyboard.add(s4);
+  keyboard.add(s5);
+  keyboard.add(s6);
+  keyboard.add(s7);
+  mapC.add(new Circles(100, 100, 1, 1, BLUE));
+  mapC.add(new Circles(200, 100, 2, 1, BLUE));
+  mapC.add(new Circles(300, 100, 3, 5, BLUE));
+  mapC.add(new Circles(400, 100, 4, 5, BLUE));
+  mapC.add(new Circles(500, 100, 5, 6, BLUE));
+  mapC.add(new Circles(600, 100, 6, 6, BLUE));
+  mapC.add(new Circles(700, 100, 7, 5, BLUE));
+  mapC.add(new Circles(700, 300, 1, 4, RED));
+  mapC.add(new Circles(600, 300, 2, 4, RED));
+  mapC.add(new Circles(500, 300, 3, 3, RED));
+  mapC.add(new Circles(400, 300, 4, 3, RED));
+  mapC.add(new Circles(300, 300, 5, 2, RED));
+  mapC.add(new Circles(200, 300, 6, 2, RED));
+  mapC.add(new Circles(100, 300, 7, 1, RED));
+  mapC.add(new Circles(700, 700, 1, 5, BLUE));
+  mapC.add(new Circles(600, 600, 2, 5, BLUE));
+  mapC.add(new Circles(500, 500, 3, 4, BLUE));
+  mapC.add(new Circles(400, 400, 4, 4, BLUE));
+  mapC.add(new Circles(300, 300, 5, 3, BLUE));
+  mapC.add(new Circles(200, 200, 6, 3, BLUE));
+  mapC.add(new Circles(100, 100, 7, 2, BLUE));
+  mapC.add(new Circles(100, 100, 7, 3, BLUE));
+  bg = loadImage("newset.jpg");
+  updateTemp();
+  displayScore();
+  displayCombo();
+  displayClicks();
 }
 
 
@@ -99,6 +145,11 @@ void draw() {
       startScreen = false;
       map1 = true;
       drawMap1();
+    }
+    if (mousePressed && 300<mouseX && 500>mouseX && 500<mouseY && 600>mouseY) {
+      startScreen = false;
+      map2 = true;
+      drawMap2();
     }
   }
   if (!startScreen) {
@@ -133,15 +184,14 @@ void draw() {
             c.update();
           } else {
             mapC.remove(c);
-            //keyboard.get(c.pitch-1).play();
             updateTemp();
-            //noLoop();
             circleTime = false;
             sliderTime = true;
           }
         }
       }
     }
+    loop();
     if(sliderTime){
       fill(0);
       if(mapSl.size()>0){
@@ -167,11 +217,13 @@ void draw() {
       }
     }
     if(spinnerTime){
-      if(sp1.currentDuration<sp1.duration){
-        sp1.draw();
-        sp1.currentDuration++;
-        if(sp1.checkRev()){
-          points += 1000;
+      if(mapSp.size()>0){
+        if(mapSp.get(0).currentDuration<sp1.duration){
+          mapSp.get(0).draw();
+          mapSp.get(0).currentDuration++;
+          if(mapSp.get(0).checkRev()){
+            points += 1000;
+          }
         }
       }
     }
@@ -183,7 +235,7 @@ void draw() {
     
     
     
-    delay(50);
+    delay(80);
     displayScore();
     displayCombo();
     displayClicks();
