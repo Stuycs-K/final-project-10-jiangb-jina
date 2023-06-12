@@ -26,9 +26,10 @@ int BLUE = #0000FF;
 Sliders t1, t2;
 boolean bomb = false;
 Spinners sp1;
-boolean sliderFailed = false;
 boolean startScreen = true;
 boolean map1 = false;
+boolean map2 = false;
+boolean map3 = false;
 PImage Osu;
 
 void drawMainMenu() {
@@ -76,9 +77,10 @@ void drawMap1() {
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
   mapC.add(new Circles(400, 100, 5, 5, BLUE));
-  mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve"));
+  mapSl.add(new Sliders(600, 400, 700, 400, 1, 3, "curve", BLUE));
   bg = loadImage("newset.jpg");
-  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
+  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve", RED);
+  mapSl.add(t1);
   updateTemp();
   displayScore();
   displayCombo();
@@ -88,6 +90,52 @@ void drawMap1() {
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
   sp1 = new Spinners(50);
+  mapSp.add(sp1);
+}
+
+void drawMap2() {
+  background(255);
+  s1 = new SoundFile(this, "do.wav");
+  s2 = new SoundFile(this, "re.wav");
+  s3 = new SoundFile(this, "mi.wav");
+  s4 = new SoundFile(this, "fa.wav");
+  s5 = new SoundFile(this, "sol.wav");
+  s6 = new SoundFile(this, "la.wav");
+  s7 = new SoundFile(this, "si.wav");
+  keyboard.add(s1);
+  keyboard.add(s2);
+  keyboard.add(s3);
+  keyboard.add(s4);
+  keyboard.add(s5);
+  keyboard.add(s6);
+  keyboard.add(s7);
+  mapC.add(new Circles(100, 100, 1, 1, BLUE));
+  mapC.add(new Circles(200, 100, 2, 1, BLUE));
+  mapC.add(new Circles(300, 100, 3, 5, BLUE));
+  mapC.add(new Circles(400, 100, 4, 5, BLUE));
+  mapC.add(new Circles(500, 100, 5, 6, BLUE));
+  mapC.add(new Circles(600, 100, 6, 6, BLUE));
+  mapC.add(new Circles(700, 100, 7, 5, BLUE));
+  mapC.add(new Circles(700, 300, 1, 4, RED));
+  mapC.add(new Circles(600, 300, 2, 4, RED));
+  mapC.add(new Circles(500, 300, 3, 3, RED));
+  mapC.add(new Circles(400, 300, 4, 3, RED));
+  mapC.add(new Circles(300, 300, 5, 2, RED));
+  mapC.add(new Circles(200, 300, 6, 2, RED));
+  mapC.add(new Circles(100, 300, 7, 1, RED));
+  mapC.add(new Circles(700, 700, 1, 5, BLUE));
+  mapC.add(new Circles(600, 600, 2, 5, BLUE));
+  mapC.add(new Circles(500, 500, 3, 4, BLUE));
+  mapC.add(new Circles(400, 400, 4, 4, BLUE));
+  mapC.add(new Circles(300, 300, 5, 3, BLUE));
+  mapC.add(new Circles(200, 200, 6, 3, BLUE));
+  mapC.add(new Circles(100, 100, 7, 2, BLUE));
+  mapC.add(new Circles(100, 100, 7, 3, BLUE));
+  bg = loadImage("newset.jpg");
+  updateTemp();
+  displayScore();
+  displayCombo();
+  displayClicks();
 }
 
 
@@ -98,58 +146,93 @@ void draw() {
       map1 = true;
       drawMap1();
     }
+    if (mousePressed && 300<mouseX && 500>mouseX && 500<mouseY && 600>mouseY) {
+      startScreen = false;
+      map2 = true;
+      drawMap2();
+    }
   }
   if (!startScreen) {
     background(bg);
-    /*
-    if (!t1.done) {
-      t1.display();
-      //can't start before the outer circle meets the inner
-      if (mousePressed && t1.checkHit(mouseX, mouseY) && sliderFailed == false && millis()-t1.startT>1500) {
-        points += 5;
-        keyboard.get(t1.pitch-1).play();
+    boolean circleTime = true;
+    boolean sliderTime = false;
+    boolean spinnerTime = false;
+    if (circleTime) {
+      if (mapC.size()>=3) {
+        for (Circles c : temp) {
+          if (c.display()) {
+            c.update();
+          } else {
+            mapC.remove(c);
+            keyboard.get(c.pitch-1).play();
+            updateTemp();
+          }
+        }
+      } else if (mapC.size()==2) {
+        for (Circles c : ts2) {
+          if (c.display()) {
+            c.update();
+          } else {
+            mapC.remove(c);
+            keyboard.get(c.pitch-1).play();
+            updateTemp();
+          }
+        }
       } else {
-        t1.done = false;
-        //once you miss you can't get points from it anymore
-        if (millis()-t1.startT>1500) {
-          sliderFailed = true;
+        for (Circles c : ts1) {
+          if (c.display()) {
+            c.update();
+          } else {
+            mapC.remove(c);
+            updateTemp();
+            circleTime = false;
+            sliderTime = true;
+          }
         }
       }
     }
-    */
-    if (mapC.size()>=3) {
-      for (Circles c : temp) {
-        if (c.display()) {
-          c.update();
-        } else {
-          mapC.remove(c);
-          keyboard.get(c.pitch-1).play();
-          updateTemp();
+    if (sliderTime) {
+      fill(0);
+      if (mapSl.size()>0) {
+        if (!mapSl.get(0).done) {
+          mapSl.get(0).display();
+          if (mapSl.get(0).afterAdding==0){
+            mapSl.get(0).startT = millis();
+          }
+          if (millis()-mapSl.get(0).startT>6000) {
+            mapSl.remove(mapSl.get(0));
+          } 
+          println(millis()-mapSl.get(0).startT);
+          //can't start before the outer circle meets the inner
+          if (millis()-mapSl.get(0).startT>1500) {
+            if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
+              points += 5;
+              keyboard.get(mapSl.get(0).pitch-1).play();
+            } else {
+              mapSl.get(0).sliderFailed = true;
+            }
+          }
+        } else if (mapSl.get(0).done) {
+          mapSl.remove(mapSl.get(0));
         }
+      } else {
+        sliderTime = false;
+        spinnerTime = true;
       }
-    } else if (mapC.size()==2) {
-      for (Circles c : ts2) {
-        if (c.display()) {
-          c.update();
-        } else {
-          mapC.remove(c);
-          keyboard.get(c.pitch-1).play();
-          updateTemp();
-        }
-      }
-    } else {
-      for (Circles c : ts1) {
-        if (c.display()) {
-          c.update();
-        } else {
-          mapC.remove(c);
-          keyboard.get(c.pitch-1).play();
-          updateTemp();
-          noLoop();
+      mapSl.get(0).afterAdding++;
+    }
+    if(spinnerTime){
+      if(mapSp.size()>0){
+        if(mapSp.get(0).currentDuration<sp1.duration){
+          mapSp.get(0).draw();
+          mapSp.get(0).currentDuration++;
+          if(mapSp.get(0).checkRev()){
+            points += 1000;
+          }
         }
       }
     }
-    delay(50);
+    delay(80);
     displayScore();
     displayCombo();
     displayClicks();
@@ -186,7 +269,6 @@ void mouseClicked() {
       temp[0].hit = true;
       temp[0].timeEnd = millis();
       float setUp = temp[0].getTime();
-      println(setUp);
       if (temp[0].isBomb()==1) {
         //should taps add if bomb
         combo = 0;
