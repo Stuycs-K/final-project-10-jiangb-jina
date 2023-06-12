@@ -96,3 +96,5 @@ Updated sliders so that it is ready for scores.
 ### 6-11
 
 Implemented spinners
+Created maps
+Made sure all maps work
