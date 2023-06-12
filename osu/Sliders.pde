@@ -16,7 +16,7 @@ public class Sliders {
   //for curvePoints
   int step = 1;
 
-  public Sliders(int x, int y, int eX, int eY, int comboNumber, int p, String s) {
+  public Sliders(int x, int y, int eX, int eY, int comboNumber, int p, String s, int c) {
     startX = x;
     endX = eX;
     startY = y;
@@ -30,6 +30,7 @@ public class Sliders {
     pitch = p;
     startT = millis();
     type = s;
+    comboColor = c;
     if (type.equals("curve")) {
       endX = bezierPoint(startX, startX-240, startX+20, startX-280, 1);
       endY = bezierPoint(startY, startY-10, startY+280, startY+240, 1);
@@ -48,9 +49,12 @@ public class Sliders {
       bezier(startX, startY, startX-240, startY-10, startX+20, startY+280, startX-280, startY+240);
       endShape();
     }
-    fill(145);
+    fill(comboColor);
     strokeWeight(1);
     circle(startX, startY, innerRadius);
+    fill(0);
+    circle(endX, endY, 10);
+    fill(comboColor);
     text(comboNumber, startX, startY);
     if (innerRadius == outerRadius) {
       if (tempX!=endX) {
