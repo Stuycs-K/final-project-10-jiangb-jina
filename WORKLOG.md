@@ -22,15 +22,12 @@ Edited the score class so that it could be used and referenced in the Main class
 
 ## 6/1
 Edited the score methods, created displayScore and displayCombo, and worked on bomb objects.
-<<<<<<< HEAD
-=======
 
 ## 6/5 & 6/6
 Made score more accurate to match frame rate & edited bomb objects
 
 ## 6/8
 Fixed the scoring of bombs and combo counter
->>>>>>> 4fe9ddc929095a022afba6b3d14994d855ab4492
 
 ## 6/9
 Made negative scoring and worked on spinners
