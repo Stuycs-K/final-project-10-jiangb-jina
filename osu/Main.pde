@@ -72,7 +72,7 @@ void drawMap1() {
   keyboard.add(s5);
   keyboard.add(s6);
   keyboard.add(s7);
-  //mapC.add(new Bomb(300, 450, 1, 5));
+  mapC.add(new Bomb(300, 450, 1, 5));
   mapC.add(new Circles(100, 100, 2, 3, BLUE));
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
@@ -194,12 +194,12 @@ void draw() {
       map1 = true;
       drawMap1();
     }
-    if (mousePressed && 300<mouseX && 500>mouseX && 500<mouseY && 600>mouseY) {
+    if (mousePressed && 400<mouseX && 600>mouseX && 500<mouseY && 600>mouseY) {
       startScreen = false;
       map2 = true;
       drawMap2();
     }
-    if (mousePressed && 500<mouseX && 700>mouseX && 500<mouseY && 600>mouseY) {
+    if (mousePressed && 700<mouseX && 900>mouseX && 500<mouseY && 600>mouseY) {
       startScreen = false;
       map3 = true;
       drawMap3();
@@ -269,6 +269,7 @@ void draw() {
           }
           mapSl.get(0).afterAdding++;
         } else {
+          combo += mapSl.get(0).combo;
           mapSl.remove(mapSl.get(0));
         }
       } else {
@@ -286,6 +287,7 @@ void draw() {
           }
         }
       }
+      combo++;
     }
     delay(80);
     displayScore();
