@@ -17,6 +17,7 @@ public class Sliders {
   int step = 1;
   boolean sliderFailed;
   int afterAdding = 0;
+  int combo;
 
   public Sliders(int x, int y, int eX, int eY, int comboNumber, int p, String s, int c) {
     startX = x;
@@ -37,6 +38,7 @@ public class Sliders {
       endY = bezierPoint(startY, startY-10, startY+280, startY+240, 1);
     }
     sliderFailed = false;
+    combo = 0;
   }
 
   public boolean display() {
@@ -64,6 +66,7 @@ public class Sliders {
         updateMove();
         circle(tempX, tempY, innerRadius);
       } else {
+        combo++;
         done = true;
       }
     } else {

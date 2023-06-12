@@ -16,6 +16,7 @@ public class Spinners{
   public void draw(){
     fill(#4D78EC);
     circle(width/2, height/2, 100);
+    text("Spin!",width/2,100+height/2);
     if(mouseX < width/2 && mouseY < height/2){
       c1 = true;
     }

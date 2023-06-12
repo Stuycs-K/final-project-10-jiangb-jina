@@ -72,7 +72,7 @@ void drawMap1() {
   keyboard.add(s5);
   keyboard.add(s6);
   keyboard.add(s7);
-  mapC.add(new Bomb(300, 450, 1, 5));
+  //mapC.add(new Bomb(300, 450, 1, 5));
   mapC.add(new Circles(100, 100, 2, 3, BLUE));
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
@@ -91,7 +91,6 @@ void drawMap1() {
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
   sp1 = new Spinners(50);
   mapSp.add(sp1);
-<<<<<<< HEAD
 }
 
 void drawMap2() {
@@ -131,109 +130,35 @@ void drawMap2() {
   mapC.add(new Circles(300, 300, 5, 3, BLUE));
   mapC.add(new Circles(200, 200, 6, 3, BLUE));
   mapC.add(new Circles(100, 100, 7, 2, BLUE));
+  mapC.add(new Circles(100, 500, 1, 5, RED));
+  mapC.add(new Circles(200, 500, 2, 5, RED));
+  mapC.add(new Circles(300, 500, 3, 4, RED));
+  mapC.add(new Circles(400, 500, 4, 4, RED));
+  mapC.add(new Circles(500, 500, 5, 3, RED));
+  mapC.add(new Circles(600, 500, 6, 3, RED));
+  mapC.add(new Circles(700, 500, 7, 2, RED));
+  mapC.add(new Circles(100, 100, 1, 1, BLUE));
+  mapC.add(new Circles(200, 100, 2, 1, BLUE));
+  mapC.add(new Circles(300, 100, 3, 5, BLUE));
+  mapC.add(new Circles(400, 100, 4, 5, BLUE));
+  mapC.add(new Circles(500, 100, 5, 6, BLUE));
+  mapC.add(new Circles(600, 100, 6, 6, BLUE));
+  mapC.add(new Circles(700, 100, 7, 5, BLUE));
+  mapC.add(new Circles(700, 300, 1, 4, RED));
+  mapC.add(new Circles(600, 300, 2, 4, RED));
+  mapC.add(new Circles(500, 300, 3, 3, RED));
+  mapC.add(new Circles(400, 300, 4, 3, RED));
+  mapC.add(new Circles(300, 300, 5, 2, RED));
+  mapC.add(new Circles(200, 300, 6, 2, RED));
+  mapC.add(new Circles(100, 300, 7, 1, RED));
   mapC.add(new Circles(100, 100, 7, 3, BLUE));
   bg = loadImage("newset.jpg");
   updateTemp();
   displayScore();
   displayCombo();
   displayClicks();
-=======
->>>>>>> 5c6bf7f7ca3c44fa6969eb286a594a12362e8d40
 }
 
-void drawMap2() {
-  background(255);
-  s1 = new SoundFile(this, "do.wav");
-  s2 = new SoundFile(this, "re.wav");
-  s3 = new SoundFile(this, "mi.wav");
-  s4 = new SoundFile(this, "fa.wav");
-  s5 = new SoundFile(this, "sol.wav");
-  s6 = new SoundFile(this, "la.wav");
-  s7 = new SoundFile(this, "si.wav");
-  keyboard.add(s1);
-  keyboard.add(s2);
-  keyboard.add(s3);
-  keyboard.add(s4);
-  keyboard.add(s5);
-  keyboard.add(s6);
-  keyboard.add(s7);
-  mapC.add(new Circles(100, 100, 1, 1, BLUE));
-  mapC.add(new Circles(200, 100, 2, 1, BLUE));
-  mapC.add(new Circles(300, 100, 3, 5, BLUE));
-  mapC.add(new Circles(400, 100, 4, 5, BLUE));
-  mapC.add(new Circles(500, 100, 5, 6, BLUE));
-  mapC.add(new Circles(600, 100, 6, 6, BLUE));
-  mapC.add(new Circles(700, 100, 7, 5, BLUE));
-  mapC.add(new Circles(700, 300, 1, 4, RED));
-  mapC.add(new Circles(600, 300, 2, 4, RED));
-  mapC.add(new Circles(500, 300, 3, 3, RED));
-  mapC.add(new Circles(400, 300, 4, 3, RED));
-  mapC.add(new Circles(300, 300, 5, 2, RED));
-  mapC.add(new Circles(200, 300, 6, 2, RED));
-  mapC.add(new Circles(100, 300, 7, 1, RED));
-  mapC.add(new Circles(700, 700, 1, 5, BLUE));
-  mapC.add(new Circles(600, 600, 2, 5, BLUE));
-  mapC.add(new Circles(500, 500, 3, 4, BLUE));
-  mapC.add(new Circles(400, 400, 4, 4, BLUE));
-  mapC.add(new Circles(300, 300, 5, 3, BLUE));
-  mapC.add(new Circles(200, 200, 6, 3, BLUE));
-  mapC.add(new Circles(100, 100, 7, 2, BLUE));
-  mapC.add(new Circles(700, 500, 1, 5, RED));
-  mapC.add(new Circles(600, 500, 2, 5, RED));
-  mapC.add(new Circles(500, 500, 3, 4, RED));
-  mapC.add(new Circles(400, 500, 4, 4, RED));
-  mapC.add(new Circles(300, 500, 5, 3, RED));
-  mapC.add(new Circles(200, 500, 6, 3, RED));
-  mapC.add(new Circles(100, 500, 7, 2, RED));
-  mapC.add(new Circles(100, 100, 1, 1, BLUE));
-  mapC.add(new Circles(200, 100, 2, 1, BLUE));
-  mapC.add(new Circles(300, 100, 3, 5, BLUE));
-  mapC.add(new Circles(400, 100, 4, 5, BLUE));
-  mapC.add(new Circles(500, 100, 5, 6, BLUE));
-  mapC.add(new Circles(600, 100, 6, 6, BLUE));
-  mapC.add(new Circles(700, 100, 7, 5, BLUE));
-  mapC.add(new Circles(700, 300, 1, 4, RED));
-  mapC.add(new Circles(600, 300, 2, 4, RED));
-  mapC.add(new Circles(500, 300, 3, 3, RED));
-  mapC.add(new Circles(400, 300, 4, 3, RED));
-  mapC.add(new Circles(300, 300, 5, 2, RED));
-  mapC.add(new Circles(200, 300, 6, 2, RED));
-  mapC.add(new Circles(100, 300, 7, 1, RED));
-  mapC.add(new Circles(100, 300, 8, 1, RED));
-  updateTemp();
-  displayScore();
-  displayCombo();
-  displayClicks();
-  bg = loadImage("newset.jpg");
-}
-
-void drawMap3() {
-  background(255);
-  s1 = new SoundFile(this, "do.wav");
-  s2 = new SoundFile(this, "re.wav");
-  s3 = new SoundFile(this, "mi.wav");
-  s4 = new SoundFile(this, "fa.wav");
-  s5 = new SoundFile(this, "sol.wav");
-  s6 = new SoundFile(this, "la.wav");
-  s7 = new SoundFile(this, "si.wav");
-  keyboard.add(s1);
-  keyboard.add(s2);
-  keyboard.add(s3);
-  keyboard.add(s4);
-  keyboard.add(s5);
-  keyboard.add(s6);
-  keyboard.add(s7);
-  mapC.add(new Circles(100, 300, 7, 1, RED));
-  mapC.add(new Circles(100, 300, 8, 1, RED));
-  mapSl.add(new Sliders(200,200,400,200,1,5, "horizontal", RED));
-  mapSl.add(new Sliders(400,400,600,400,1,6, "horizontal", BLUE));
-  mapSl.add(new Sliders(600,100,400,200,1,7, "curve", RED));
-  updateTemp();
-  displayScore();
-  displayCombo();
-  displayClicks();
-  bg = loadImage("newset.jpg");
-}
 
 void draw() {
   if (startScreen) {
@@ -242,23 +167,11 @@ void draw() {
       map1 = true;
       drawMap1();
     }
-<<<<<<< HEAD
     if (mousePressed && 300<mouseX && 500>mouseX && 500<mouseY && 600>mouseY) {
-=======
-    if (mousePressed && 400<mouseX && 600>mouseX && 500<mouseY && 600>mouseY) {
->>>>>>> 5c6bf7f7ca3c44fa6969eb286a594a12362e8d40
       startScreen = false;
       map2 = true;
       drawMap2();
     }
-<<<<<<< HEAD
-=======
-    if (mousePressed && 700<mouseX && 900>mouseX && 500<mouseY && 600>mouseY) {
-      startScreen = false;
-      map3 = true;
-      drawMap3();
-    }
->>>>>>> 5c6bf7f7ca3c44fa6969eb286a594a12362e8d40
   }
   if (!startScreen) {
     background(bg);
@@ -292,13 +205,7 @@ void draw() {
             c.update();
           } else {
             mapC.remove(c);
-<<<<<<< HEAD
             updateTemp();
-=======
-            //keyboard.get(c.pitch-1).play();
-            updateTemp();
-            //noLoop();
->>>>>>> abc5dc4f14a0bfe96eeee34623e4a628241903fd
             circleTime = false;
             sliderTime = true;
           }
@@ -310,7 +217,6 @@ void draw() {
       if (mapSl.size()>0) {
         if (!mapSl.get(0).done) {
           mapSl.get(0).display();
-<<<<<<< HEAD
           if (mapSl.get(0).afterAdding==0){
             mapSl.get(0).startT = millis();
           }
@@ -320,17 +226,6 @@ void draw() {
           println(millis()-mapSl.get(0).startT);
           //can't start before the outer circle meets the inner
           if (millis()-mapSl.get(0).startT>1500) {
-=======
-          if (mapSl.get(0).afterAdding==0) {
-            mapSl.get(0).startT = millis();
-          }
-          if (millis()-mapSl.get(0).startT>6000) {
-            mapSl.get(0).done=true;
-          }
-          //println(millis()-mapSl.get(0).startT);
-          //can't start before the outer circle meets the inner
-          if (millis()-mapSl.get(0).startT>1500 && millis()-mapSl.get(0).startT<=6000) {
->>>>>>> abc5dc4f14a0bfe96eeee34623e4a628241903fd
             if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
               points += 5;
               keyboard.get(mapSl.get(0).pitch-1).play();
@@ -338,23 +233,13 @@ void draw() {
               mapSl.get(0).sliderFailed = true;
             }
           }
-<<<<<<< HEAD
         } else if (mapSl.get(0).done) {
-=======
-          mapSl.get(0).afterAdding++;
-        } else {
-<<<<<<< HEAD
->>>>>>> abc5dc4f14a0bfe96eeee34623e4a628241903fd
-=======
-          combo += mapSl.get(0).combo;
->>>>>>> 5c6bf7f7ca3c44fa6969eb286a594a12362e8d40
           mapSl.remove(mapSl.get(0));
         }
       } else {
         sliderTime = false;
         spinnerTime = true;
       }
-<<<<<<< HEAD
       mapSl.get(0).afterAdding++;
     }
     if(spinnerTime){
@@ -365,38 +250,12 @@ void draw() {
           if(mapSp.get(0).checkRev()){
             points += 1000;
           }
+        }else{
+          noLoop();
         }
       }
     }
     delay(80);
-=======
-    }
-    if (spinnerTime) {
-      if(mapSp.size()>0){
-        if (mapSp.get(0).currentDuration<sp1.duration) {
-          mapSp.get(0).draw();
-          mapSp.get(0).currentDuration++;
-          if (mapSp.get(0).checkRev()) {
-            points += 1000;
-          }
-        }
-      }
-      combo++;
-    }
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-    delay(50);
->>>>>>> abc5dc4f14a0bfe96eeee34623e4a628241903fd
-=======
-    delay(80);
->>>>>>> 5c6bf7f7ca3c44fa6969eb286a594a12362e8d40
     displayScore();
     displayCombo();
     displayClicks();

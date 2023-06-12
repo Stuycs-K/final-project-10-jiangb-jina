@@ -35,6 +35,9 @@ Fixed the scoring of bombs and combo counter
 ## 6/9
 Made negative scoring and worked on spinners
 
+## 6/10 & 6/11
+Worked on sliders—moving along horizontal, semicircular, and curved paths, the homepage, and different maps.
+
 ## Bingde
 
 ### 5-22&&5-23
@@ -96,3 +99,6 @@ Updated sliders so that it is ready for scores.
 ### 6-11
 
 Implemented spinners
+Incorporated everything into maps
+Updated Interface
+Tested all maps
