@@ -16,6 +16,7 @@ public class Sliders {
   //for curvePoints
   int step = 1;
   boolean sliderFailed;
+  int afterAdding = 0;
 
   public Sliders(int x, int y, int eX, int eY, int comboNumber, int p, String s, int c) {
     startX = x;
@@ -29,7 +30,6 @@ public class Sliders {
     this.comboNumber = comboNumber;
     done = false;
     pitch = p;
-    startT = millis();
     type = s;
     comboColor = c;
     if (type.equals("curve")) {
@@ -74,7 +74,6 @@ public class Sliders {
       fill(comboColor);
       circle(startX, startY, innerRadius);
     }
-    startT = millis();
     return true;
   }
 

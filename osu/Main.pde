@@ -106,7 +106,7 @@ void draw() {
     boolean circleTime = true;
     boolean sliderTime = false;
     boolean spinnerTime = false;
-    if(circleTime){
+    if (circleTime) {
       if (mapC.size()>=3) {
         for (Circles c : temp) {
           if (c.display()) {
@@ -142,47 +142,53 @@ void draw() {
         }
       }
     }
-    if(sliderTime){
+    if (sliderTime) {
       fill(0);
-      if(mapSl.size()>0){
+      if (mapSl.size()>0) {
         if (!mapSl.get(0).done) {
           mapSl.get(0).display();
-          //can't start before the outer circle meets the inner
-          if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
-            points += 5;
-            keyboard.get(mapSl.get(0).pitch-1).play();
-          } else {
-            mapSl.get(0).done = false;
-            //once you miss you can't get points from it anymore
-            if (millis()-mapSl.get(0).startT>1500) {
-              mapSl.get(0).sliderFailed = true;
-             }
+          if (mapSl.get(0).afterAdding==0){
+            mapSl.get(0).startT = millis();
           }
-        }else {
+          if (millis()-mapSl.get(0).startT>6000) {
+            mapSl.remove(mapSl.get(0));
+          } 
+          println(millis()-mapSl.get(0).startT);
+          //can't start before the outer circle meets the inner
+          if (millis()-mapSl.get(0).startT>1500) {
+            if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
+              points += 5;
+              keyboard.get(mapSl.get(0).pitch-1).play();
+            } else {
+              mapSl.get(0).sliderFailed = true;
+            }
+          }
+        } else if (mapSl.get(0).done) {
           mapSl.remove(mapSl.get(0));
         }
-      }else{
+      } else {
         sliderTime = false;
         spinnerTime = true;
       }
+      mapSl.get(0).afterAdding++;
     }
-    if(spinnerTime){
-      if(sp1.currentDuration<sp1.duration){
+    if (spinnerTime) {
+      if (sp1.currentDuration<sp1.duration) {
         sp1.draw();
         sp1.currentDuration++;
-        if(sp1.checkRev()){
+        if (sp1.checkRev()) {
           points += 1000;
         }
       }
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     delay(50);
     displayScore();
     displayCombo();
