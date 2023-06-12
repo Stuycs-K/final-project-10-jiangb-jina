@@ -8,6 +8,9 @@ ArrayList<Spinners> mapSp = new ArrayList<Spinners>();
 Circles[] temp = new Circles[3];
 Circles[] ts2 = new Circles[2];
 Circles[] ts1 = new Circles[1];
+Sliders[] tempSl = new Sliders[3];
+Sliders[] tempSl2 = new Sliders[2];
+Sliders[] tempSl3 = new Sliders[1];
 SoundFile file;
 int taps = 0;
 int combo = 0;
@@ -24,7 +27,6 @@ Sliders t1, t2;
 boolean bomb = false;
 Spinners sp1;
 boolean sliderFailed = false;
-int numOb = mapC.size()+mapSl.size()+mapSp.size();
 boolean startScreen = true;
 boolean map1 = false;
 PImage Osu;
@@ -69,8 +71,7 @@ void drawMap1() {
   keyboard.add(s5);
   keyboard.add(s6);
   keyboard.add(s7);
-  //update numOb later
-  mapC.add(new Bomb(300, 450, 1, 5));
+  //mapC.add(new Bomb(300, 450, 1, 5));
   mapC.add(new Circles(100, 100, 2, 3, BLUE));
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
@@ -78,7 +79,6 @@ void drawMap1() {
   mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve"));
   bg = loadImage("newset.jpg");
   t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
-  numOb = mapC.size()+mapSl.size()+mapSp.size();
   updateTemp();
   displayScore();
   displayCombo();
@@ -101,6 +101,7 @@ void draw() {
   }
   if (!startScreen) {
     background(bg);
+    /*
     if (!t1.done) {
       t1.display();
       //can't start before the outer circle meets the inner
@@ -115,7 +116,8 @@ void draw() {
         }
       }
     }
-    if (numOb>=3) {
+    */
+    if (mapC.size()>=3) {
       for (Circles c : temp) {
         if (c.display()) {
           c.update();
