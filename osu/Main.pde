@@ -22,6 +22,7 @@ int RED = #cd3232;
 int BLUE = #0000FF;
 Sliders t1, t2;
 boolean bomb = false;
+Spinners sp1;
 boolean sliderFailed = false;
 int numOb = mapC.size()+mapSl.size()+mapSp.size();
 boolean startScreen = true;
@@ -76,7 +77,7 @@ void drawMap1() {
   mapC.add(new Circles(400, 100, 5, 5, BLUE));
   mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve", BLUE));
   bg = loadImage("newset.jpg");
-  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve", BLUE);
+  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve", RED);
   numOb = mapC.size()+mapSl.size()+mapSp.size();
   updateTemp();
   displayScore();
@@ -86,6 +87,7 @@ void drawMap1() {
   //file.play();
   //t1 = new Sliders(200,200,400,200,1,3, "horizontal");
   //t1 = new Sliders(200, 200, 600, 200, 1, 3, "semi");
+  sp1 = new Spinners(50);
 }
 
 

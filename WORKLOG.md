@@ -90,4 +90,9 @@ Deleted some methods in circles class and started implementing sliders
 
 ### 6-9
 
-Updated sliders so that it is ready for scores. 
+Updated sliders so that it is ready for scores.
+
+
+### 6-11
+
+Implemented spinners
