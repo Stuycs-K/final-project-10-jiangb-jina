@@ -147,15 +147,15 @@ void draw() {
       if (mapSl.size()>0) {
         if (!mapSl.get(0).done) {
           mapSl.get(0).display();
-          if (mapSl.get(0).afterAdding==0){
+          if (mapSl.get(0).afterAdding==0) {
             mapSl.get(0).startT = millis();
           }
           if (millis()-mapSl.get(0).startT>6000) {
-            mapSl.remove(mapSl.get(0));
-          } 
-          println(millis()-mapSl.get(0).startT);
+            mapSl.get(0).done=true;
+          }
+          //println(millis()-mapSl.get(0).startT);
           //can't start before the outer circle meets the inner
-          if (millis()-mapSl.get(0).startT>1500) {
+          if (millis()-mapSl.get(0).startT>1500 && millis()-mapSl.get(0).startT<=6000) {
             if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
               points += 5;
               keyboard.get(mapSl.get(0).pitch-1).play();
@@ -163,14 +163,14 @@ void draw() {
               mapSl.get(0).sliderFailed = true;
             }
           }
-        } else if (mapSl.get(0).done) {
+          mapSl.get(0).afterAdding++;
+        } else {
           mapSl.remove(mapSl.get(0));
         }
       } else {
         sliderTime = false;
         spinnerTime = true;
       }
-      mapSl.get(0).afterAdding++;
     }
     if (spinnerTime) {
       if (sp1.currentDuration<sp1.duration) {
