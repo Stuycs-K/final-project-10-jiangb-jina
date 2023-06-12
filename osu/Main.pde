@@ -26,9 +26,10 @@ int BLUE = #0000FF;
 Sliders t1, t2;
 boolean bomb = false;
 Spinners sp1;
-boolean sliderFailed = false;
 boolean startScreen = true;
 boolean map1 = false;
+boolean map2 = false;
+boolean map3 = false;
 PImage Osu;
 
 void drawMainMenu() {
@@ -76,14 +77,10 @@ void drawMap1() {
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
   mapC.add(new Circles(400, 100, 5, 5, BLUE));
-  mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve", BLUE));
+  mapSl.add(new Sliders(600, 400, 700, 400, 1, 3, "curve", BLUE));
   bg = loadImage("newset.jpg");
-<<<<<<< HEAD
-  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
-=======
   t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve", RED);
-  numOb = mapC.size()+mapSl.size()+mapSp.size();
->>>>>>> fd7f8bdae75a0ab48524a0fc6092fd1953d1c108
+  mapSl.add(t1);
   updateTemp();
   displayScore();
   displayCombo();
@@ -106,54 +103,86 @@ void draw() {
   }
   if (!startScreen) {
     background(bg);
-    /*
-    if (!t1.done) {
-      t1.display();
-      //can't start before the outer circle meets the inner
-      if (mousePressed && t1.checkHit(mouseX, mouseY) && sliderFailed == false && millis()-t1.startT>1500) {
-        points += 5;
-        keyboard.get(t1.pitch-1).play();
+    boolean circleTime = true;
+    boolean sliderTime = false;
+    boolean spinnerTime = false;
+    if(circleTime){
+      if (mapC.size()>=3) {
+        for (Circles c : temp) {
+          if (c.display()) {
+            c.update();
+          } else {
+            mapC.remove(c);
+            keyboard.get(c.pitch-1).play();
+            updateTemp();
+          }
+        }
+      } else if (mapC.size()==2) {
+        for (Circles c : ts2) {
+          if (c.display()) {
+            c.update();
+          } else {
+            mapC.remove(c);
+            keyboard.get(c.pitch-1).play();
+            updateTemp();
+          }
+        }
       } else {
-        t1.done = false;
-        //once you miss you can't get points from it anymore
-        if (millis()-t1.startT>1500) {
-          sliderFailed = true;
+        for (Circles c : ts1) {
+          if (c.display()) {
+            c.update();
+          } else {
+            mapC.remove(c);
+            //keyboard.get(c.pitch-1).play();
+            updateTemp();
+            //noLoop();
+            circleTime = false;
+            sliderTime = true;
+          }
         }
       }
     }
-    */
-    if (mapC.size()>=3) {
-      for (Circles c : temp) {
-        if (c.display()) {
-          c.update();
-        } else {
-          mapC.remove(c);
-          keyboard.get(c.pitch-1).play();
-          updateTemp();
+    if(sliderTime){
+      fill(0);
+      if(mapSl.size()>0){
+        if (!mapSl.get(0).done) {
+          mapSl.get(0).display();
+          //can't start before the outer circle meets the inner
+          if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
+            points += 5;
+            keyboard.get(mapSl.get(0).pitch-1).play();
+          } else {
+            mapSl.get(0).done = false;
+            //once you miss you can't get points from it anymore
+            if (millis()-mapSl.get(0).startT>1500) {
+              mapSl.get(0).sliderFailed = true;
+             }
+          }
+        }else {
+          mapSl.remove(mapSl.get(0));
         }
+      }else{
+        sliderTime = false;
+        spinnerTime = true;
       }
-    } else if (mapC.size()==2) {
-      for (Circles c : ts2) {
-        if (c.display()) {
-          c.update();
-        } else {
-          mapC.remove(c);
-          keyboard.get(c.pitch-1).play();
-          updateTemp();
-        }
-      }
-    } else {
-      for (Circles c : ts1) {
-        if (c.display()) {
-          c.update();
-        } else {
-          mapC.remove(c);
-          keyboard.get(c.pitch-1).play();
-          updateTemp();
-          noLoop();
+    }
+    if(spinnerTime){
+      if(sp1.currentDuration<sp1.duration){
+        sp1.draw();
+        sp1.currentDuration++;
+        if(sp1.checkRev()){
+          points += 1000;
         }
       }
     }
+    
+    
+    
+    
+    
+    
+    
+    
     delay(50);
     displayScore();
     displayCombo();
@@ -191,7 +220,6 @@ void mouseClicked() {
       temp[0].hit = true;
       temp[0].timeEnd = millis();
       float setUp = temp[0].getTime();
-      println(setUp);
       if (temp[0].isBomb()==1) {
         //should taps add if bomb
         combo = 0;
