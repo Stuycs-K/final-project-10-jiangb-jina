@@ -37,7 +37,6 @@ public class Spinners{
       c2 = false;
       c3 = false;
       c4 = false;
-      println("" + rev + " revs");
       return true;
     }else{
       return false;
