@@ -76,9 +76,14 @@ void drawMap1() {
   mapC.add(new Circles(200, 150, 3, 3, BLUE));
   mapC.add(new Circles(300, 80, 4, 4, BLUE));
   mapC.add(new Circles(400, 100, 5, 5, BLUE));
-  mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve"));
+  mapSl.add(new Sliders(300, 400, 700, 400, 1, 3, "curve", BLUE));
   bg = loadImage("newset.jpg");
+<<<<<<< HEAD
   t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve");
+=======
+  t1 = new Sliders(300, 400, 700, 400, 1, 3, "curve", RED);
+  numOb = mapC.size()+mapSl.size()+mapSp.size();
+>>>>>>> fd7f8bdae75a0ab48524a0fc6092fd1953d1c108
   updateTemp();
   displayScore();
   displayCombo();
