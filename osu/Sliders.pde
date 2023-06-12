@@ -15,6 +15,8 @@ public class Sliders {
   String type;
   //for curvePoints
   int step = 1;
+  boolean sliderFailed;
+  int afterAdding = 0;
 
   public Sliders(int x, int y, int eX, int eY, int comboNumber, int p, String s, int c) {
     startX = x;
@@ -28,17 +30,18 @@ public class Sliders {
     this.comboNumber = comboNumber;
     done = false;
     pitch = p;
-    startT = millis();
     type = s;
     comboColor = c;
     if (type.equals("curve")) {
       endX = bezierPoint(startX, startX-240, startX+20, startX-280, 1);
       endY = bezierPoint(startY, startY-10, startY+280, startY+240, 1);
     }
+    sliderFailed = false;
   }
 
   public boolean display() {
     noFill();
+    stroke(0);
     strokeWeight(3);
     if (type.equals("horizontal")) {
       line(startX, startY, endX, endY);
@@ -61,7 +64,6 @@ public class Sliders {
         updateMove();
         circle(tempX, tempY, innerRadius);
       } else {
-        coverSlider();
         done = true;
       }
     } else {

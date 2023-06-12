@@ -153,7 +153,7 @@ void draw() {
           if (millis()-mapSl.get(0).startT>6000) {
             mapSl.remove(mapSl.get(0));
           } 
-          println(millis()-mapSl.get(0).startT);
+          //println(millis()-mapSl.get(0).startT);
           //can't start before the outer circle meets the inner
           if (millis()-mapSl.get(0).startT>1500) {
             if (mousePressed && mapSl.get(0).checkHit(mouseX, mouseY) && mapSl.get(0).sliderFailed == false) {
