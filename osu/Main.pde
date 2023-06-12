@@ -56,7 +56,7 @@ void setup() {
   }
 }
 
-void drawMap1() {
+void drawMap3() {
   background(255);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
@@ -93,7 +93,7 @@ void drawMap1() {
   mapSp.add(sp1);
 }
 
-void drawMap2() {
+void drawMap1() {
   background(255);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
@@ -159,7 +159,7 @@ void drawMap2() {
   bg = loadImage("newset.jpg");
 }
 
-void drawMap3() {
+void drawMap2() {
   background(255);
   s1 = new SoundFile(this, "do.wav");
   s2 = new SoundFile(this, "re.wav");
