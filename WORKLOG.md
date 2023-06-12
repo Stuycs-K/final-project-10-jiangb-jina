@@ -3,36 +3,47 @@
 ## Allison
 
 ### 5/22 & 5/23
-resolved issues with git and branching
+
+Resolved issues with git and branching
 
 ### 5/24
-set up the Score class
+
+Set up the Score class
 
 ### 5/25
-wrote calculatePoints and calculateCombo
+
+Wrote calculatePoints and calculateCombo
 
 ## 5/28
-fixed compile erorrs in Score
+
+Fixed compile erorrs in Score
 
 ## 5/29
-reconciled differences between Circles and Score by updating the getTime method and reworking score calculations
+
+Reconciled differences between Circles and Score by updating the getTime method and reworking score calculations
 
 ## 5/30 & 5/31
+
 Edited the score class so that it could be used and referenced in the Main class
 
 ## 6/1
+
 Edited the score methods, created displayScore and displayCombo, and worked on bomb objects.
 
 ## 6/5 & 6/6
+
 Made score more accurate to match frame rate & edited bomb objects
 
 ## 6/8
+
 Fixed the scoring of bombs and combo counter
 
 ## 6/9
+
 Made negative scoring and worked on spinners
 
 ## 6/10 & 6/11
+
 Worked on sliders—moving along horizontal, semicircular, and curved paths, the homepage, and different maps.
 
 ## Bingde
