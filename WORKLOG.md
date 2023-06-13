@@ -14,35 +14,35 @@ Set up the Score class
 
 Wrote calculatePoints and calculateCombo
 
-## 5/28
+### 5/28
 
 Fixed compile erorrs in Score
 
-## 5/29
+### 5/29
 
 Reconciled differences between Circles and Score by updating the getTime method and reworking score calculations
 
-## 5/30 & 5/31
+### 5/30 & 5/31
 
 Edited the score class so that it could be used and referenced in the Main class
 
-## 6/1
+### 6/1
 
 Edited the score methods, created displayScore and displayCombo, and worked on bomb objects.
 
-## 6/5 & 6/6
+### 6/5 & 6/6
 
 Made score more accurate to match frame rate & edited bomb objects
 
-## 6/8
+### 6/8
 
 Fixed the scoring of bombs and combo counter
 
-## 6/9
+### 6/9
 
 Made negative scoring and worked on spinners
 
-## 6/10 & 6/11
+### 6/10 & 6/11
 
 Worked on sliders—moving along horizontal, semicircular, and curved paths, the homepage, and different maps.
 
@@ -109,3 +109,20 @@ Updated sliders so that it is ready for scores.
 Implemented spinners
 Created maps
 Made sure all maps work
+
+## Working features
+* circle, spinner, and slider objects
+* sliders do not give points until the approaching circle meets the inner one
+* once you fall off the slider, you can't get any more points from it
+* map selection
+* score counter
+* right and left tap counter
+* sound
+* combo counter
+
+## Broken features/bugs
+* each map ends with circle that repeatedly calls playNote() & adds score to avoid the array index out of bounds error
+* not a bug but could be confusing, some maps start with circle objects that are not numbered starting at 1, this is just how we made the map
+
+## Content resources
+* Processing reference
